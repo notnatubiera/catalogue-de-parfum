@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Laravel App</title>
+    <title>CATALOGUE DE PARFUM</title>
     <style>
-        nav { background: aliceblue; padding: 2rem; }
-        nav a { color: black; margin-right: 100px; text-decoration: none; font-family: sans-serif }
-        nav a:hover { color: #ff2d20; } /* Laravel Red! */
-        .container { padding: 20px; font-family: sans-serif; }
+        nav {
+            background: #F6F2EE ;
+            padding: 35px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+
+        nav a {
+            color: #555;
+            margin: 0 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        nav a:first-child {
+            font-weight: bold;
+            font-size: 18px;
+            color: #000;
+        }
+
+        nav a:hover {
+            color: #bfa37e;
+        }
+        nav a.active {
+            color: #bfa37e;
+            font-weight: bold;
+            border-bottom: 2px solid #bfa37e;
+            padding-bottom: 5px;
+        }
+
     </style>
 </head>
 <body>
 
 <nav>
-    <a>CATALOGUE DE PERFUME</a>
-    <a href="/">Collection</a>
-    <a href="/about">Notes</a>
-    <a href="/contact">Season</a>
+    <a href="/main" class="{{ request()->is('main') ? 'active' : '' }}" >CATALOGUE DE PERFUME</a>
+    <a href="/collection" class="{{ request()->is('collection') ? 'active' : '' }}">Brands</a>
+    <a href="/notes" class="{{ request()->is('notes') ? 'active' : '' }}" >Notes</a>
+    <a href="/season" class="{{ request()->is('season') ? 'active' : '' }}">Season</a>
+
 </nav>
 
 <div class="container">

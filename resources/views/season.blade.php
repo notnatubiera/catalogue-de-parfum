@@ -1,5 +1,6 @@
 @extends('layout')
 
 @section('content')
-    <h1>Welcome to the Home Page</h1>
+    <h1 style="color: #4a5568;">Seasons</h1>
+
 @endsection
