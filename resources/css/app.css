@@ -13,10 +13,12 @@
 /* Container adjustment to stop it from hiding under the header */
 .seasons-container {
     max-width: 1200px;
-    margin: 40px auto; /* Adds space at top so it doesn't hide under header */
+    margin-top:60px;
+    margin-left: 200px; /* Adds space at top so it doesn't hide under header */
     padding: 0 40px;
     text-align: center;
     font-family: 'Playfair Display', serif;
+
 }
 
 .page-title {
@@ -37,9 +39,10 @@
 /* THE GRID - Forced 4 columns */
 .seasons-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* FORCES 4 columns */
-    gap: 20px;
-    align-items: start;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    justify-content: center; /* Centers the grid items horizontally */
+    width: 100%;
 }
 
 /* THE CARDS */
