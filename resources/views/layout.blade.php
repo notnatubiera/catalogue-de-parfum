@@ -129,7 +129,7 @@
     @yield('content')
 </div>
 
-<!-- Scripts (Placed before end of body) -->
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+<!-- Make sure your CSS is linked in the <head> -->
+@vite(['resources/css/seasons.css', 'resources/js/app.js'])
 </body>
 </html>
