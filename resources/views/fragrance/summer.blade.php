@@ -6,7 +6,7 @@
         <header class="summer-header">
             <h1>Summer Collection</h1>
             <p>Fresh citrus and cool sea salt for the warmer months.</p>
-            <a href="{{ url('/') }}" class="back-link">← Back to Seasons</a>
+            <a href="{{ url('/season') }}" class="back-link">← Back to Seasons</a>
         </header>
 
         <div class="fragrance-grid">

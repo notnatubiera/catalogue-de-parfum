@@ -1,6 +1,12 @@
-/* Container and Layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* Apply the pinkish color to the WHOLE body so it fills the gaps */
+    background-color: #C2D6F4;
+}
 .summer-page {
-    background-color: #fbfcf8; /* Soft off-white */
+    background-color: #C2D6F4; /* Soft off-white */
     min-height: 100vh;
     margin-left: 200px;
     padding: 60px 20px;
