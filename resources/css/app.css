@@ -9,3 +9,105 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+/* 1. Force 4 columns in one row */
+/* Container adjustment to stop it from hiding under the header */
+.seasons-container {
+    max-width: 1200px;
+    margin: 40px auto; /* Adds space at top so it doesn't hide under header */
+    padding: 0 40px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.subtitle {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+}
+
+/* THE GRID - Forced 4 columns */
+.seasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* FORCES 4 columns */
+    gap: 20px;
+    align-items: start;
+}
+
+/* THE CARDS */
+.season-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* IMAGE BOX - Square and clean */
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Makes images perfectly square */
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: #eee;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* OVERLAY - This hides the "Explore" text inside the image until you hover */
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay span {
+    color: white;
+    border: 1px solid white;
+    padding: 8px 15px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.image-wrapper:hover .overlay {
+    opacity: 1;
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.1);
+}
+
+/* TEXT STYLING */
+.season-card h3 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 10px 0 5px 0;
+    color: #2c3e50;
+}
+
+.season-card p {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: #666;
+    margin: 0;
+    padding: 0 10px;
+}

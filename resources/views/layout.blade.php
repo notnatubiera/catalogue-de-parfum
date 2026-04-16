@@ -51,4 +51,9 @@
     @yield('content') </div>
 
 </body>
+<body>
+
+<!-- Make sure your CSS is linked in the <head> -->
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+</body>
 </html>
