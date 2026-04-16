@@ -2,121 +2,61 @@ body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    /* Apply the pinkish color to the WHOLE body so it fills the gaps */
     background-color: #C2D6F4;
 }
+
 .summer-page {
-    background-color: #C2D6F4; /* Soft off-white */
+    background-color: #C2D6F4;
     min-height: 100vh;
-    margin-left: 200px;
-    padding: 60px 20px;
-    font-family: 'Playfair Display', serif; /* Or 'Times New Roman' */
+    width: 100%; /* Changed from margin-left */
+    padding: 60px 0;
+    font-family: 'Playfair Display', serif;
     color: #333;
 }
 
-/* Header Section */
-.summer-header {
-    text-align: center;
-    margin-bottom: 80px;
+/* New Filter Bar Styles */
+.filter-bar {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
 }
 
-.summer-header h1 {
-    font-size: 3rem;
-    letter-spacing: 4px;
+.filter-bar select {
+    padding: 8px 15px;
+    margin: 0 10px;
+    border: 1px solid #2c3e50;
+    background: white;
+    font-family: inherit;
     text-transform: uppercase;
-    color: #2c3e50;
-    margin-bottom: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
 
-.summer-header p {
-    font-style: italic;
+.brand-name {
+    display: block;
+    font-size: 0.7rem;
     color: #7f8c8d;
-    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
 }
 
-.back-link {
-    display: inline-block;
-    margin-top: 20px;
-    text-decoration: none;
-    color: #95a5a6;
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
-.back-link:hover { color: #2c3e50; }
-
-/* The Grid */
+/* Rest of your existing CSS below... */
+.summer-header { text-align: center; margin-bottom: 50px; }
+.summer-header h1 { font-size: 3rem; letter-spacing: 4px; text-transform: uppercase; color: #2c3e50; }
 .fragrance-grid {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
+    padding: 0 20px;
 }
-
-/* Individual Product Cards */
-.fragrance-card {
-    background: white;
-    padding: 20px;
-    text-align: center;
-    border: 1px solid #eee;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.fragrance-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-}
-
-.img-wrapper {
-    background-color: #f0f7f9; /* Light aquatic blue background for images */
-    margin-bottom: 20px;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.img-wrapper img {
-    max-width: 80%;
-    height: auto;
-    mix-blend-mode: multiply; /* Makes white-background images look seamless */
-}
-
-.fragrance-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 5px;
-    letter-spacing: 1px;
-}
-
-.notes {
-    font-size: 0.9rem;
-    color: #16a085; /* Sea green color for notes */
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.price {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-/* Button Styling */
-.buy-btn {
-    background: transparent;
-    border: 1px solid #333;
-    padding: 10px 25px;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.buy-btn:hover {
-    background: #333;
-    color: white;
-}
+.fragrance-card { background: white; padding: 20px; text-align: center; border: 1px solid #eee; transition: 0.4s; }
+.fragrance-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.img-wrapper { background-color: #f0f7f9; margin-bottom: 20px; height: 300px; display: flex; align-items: center; justify-content: center; }
+.img-wrapper img { max-width: 80%; height: auto; }
+.notes { font-size: 0.8rem; color: #16a085; text-transform: uppercase; margin-bottom: 15px; }
+.price { display: block; font-weight: bold; margin-bottom: 20px; }
+.buy-btn { background: transparent; border: 1px solid #333; padding: 10px 25px; text-transform: uppercase; cursor: pointer; }
+.buy-btn:hover { background: #333; color: white; }
