@@ -3,39 +3,103 @@
 <head>
     <title>CATALOGUE DE PARFUM</title>
     <style>
+        /* Base Reset */
+        body { margin: 0; font-family: Times New Roman; }
+
         nav {
-            background: #F6F2EE ;
-            padding: 35px;
+            background: #F2EADF;
+            padding: 20px 40px;
             border-bottom: 1px solid #eee;
             display: flex;
-            text-align: center;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .nav-left, .nav-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-middle {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-right {
+            justify-content: flex-end;
+            gap: 30px;
+        }
+
+
+        .logo {
+            color: #555;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            white-space: nowrap;
         }
 
         nav a {
             color: #555;
-            margin: 0 30px;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 20px;
-            letter-spacing: 2px;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
         }
 
-        nav a:first-child {
-            font-weight: bold;
-            font-size: 18px;
-            color: #000;
-            margin-right: auto;
-            margin-left: 0;
-        }
-
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: #bfa37e;
         }
+
         nav a.active {
-            color: #bfa37e;
-            font-weight: bold;
             border-bottom: 2px solid #bfa37e;
             padding-bottom: 5px;
+        }
+
+
+        .search-bar {
+            text-align: center;
+            width: 250px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 50px;
+            border: 1px solid #ddd;
+            outline: none;
+            background: #fff;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .search-bar:focus,
+        .search-bar:hover {
+            border-color: #bfa37e;
+            width: 400px;
+        }
+
+
+        .add-button {
+            width: 35px;
+            height: 35px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            flex-shrink: 0;
+        }
+
+        .add-button:hover {
+            transform: scale(1.1);
+            background-color: #bfa37e;
         }
 
     </style>
@@ -43,20 +107,29 @@
 <body>
 
 <nav>
-    <a href="/main" class="{{ request()->is('main') ? 'active' : '' }}" >CATALOGUE DE PARFUM</a>
-    <a href="/collection" class="{{ request()->is('collection') ? 'active' : '' }}">Brands</a>
-    <a href="/notes" class="{{ request()->is('notes') ? 'active' : '' }}" >Notes</a>
-    <a href="/season" class="{{ request()->is('season') ? 'active' : '' }}">Season</a>
+    <!-- Left Zone: Logo -->
+    <div class="nav-left">
+        <a href="/main" class="logo {{ request()->is('main') ? 'active' : '' }}">Catalogue de Parfum</a>
+    </div>
 
+    <!-- Middle Zone: Search Bar -->
+    <div class="nav-middle">
+        <input type="text" placeholder="Looking for a particular fragrance?" class="search-bar">
+    </div>
+
+    <!-- Right Zone: Navigation and Plus Button -->
+    <div class="nav-right">
+        <a href="/collection" class="{{ request()->is('collection') ? 'active' : '' }}">Brands</a>
+        <a href="/season" class="{{ request()->is('season') ? 'active' : '' }}">Season</a>
+        <button class="add-button" title="Add fragrance?">+</button>
+    </div>
 </nav>
 
 <div class="container">
-    @yield('content') </div>
+    @yield('content')
+</div>
 
-</body>
-<body>
-
-<!-- Make sure your CSS is linked in the <head> -->
+<!-- Scripts (Placed before end of body) -->
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </body>
 </html>
