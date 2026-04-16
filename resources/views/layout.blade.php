@@ -7,6 +7,7 @@
             background: #F6F2EE ;
             padding: 35px;
             border-bottom: 1px solid #eee;
+            display: flex;
             text-align: center;
         }
 
@@ -23,6 +24,8 @@
             font-weight: bold;
             font-size: 18px;
             color: #000;
+            margin-right: auto;
+            margin-left: 0;
         }
 
         nav a:hover {
@@ -40,7 +43,7 @@
 <body>
 
 <nav>
-    <a href="/main" class="{{ request()->is('main') ? 'active' : '' }}" >CATALOGUE DE PERFUME</a>
+    <a href="/main" class="{{ request()->is('main') ? 'active' : '' }}" >CATALOGUE DE PARFUM</a>
     <a href="/collection" class="{{ request()->is('collection') ? 'active' : '' }}">Brands</a>
     <a href="/notes" class="{{ request()->is('notes') ? 'active' : '' }}" >Notes</a>
     <a href="/season" class="{{ request()->is('season') ? 'active' : '' }}">Season</a>
