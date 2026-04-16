@@ -57,6 +57,6 @@
 <body>
 
 <!-- Make sure your CSS is linked in the <head> -->
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+@vite(['resources/css/seasons.css', 'resources/js/app.js'])
 </body>
 </html>

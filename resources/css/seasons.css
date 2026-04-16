@@ -12,17 +12,18 @@
 /* 1. Force 4 columns in one row */
 /* Container adjustment to stop it from hiding under the header */
 .seasons-container {
-    max-width: 1200px;
-    margin-top:60px;
-    margin-left: 200px; /* Adds space at top so it doesn't hide under header */
+    max-width: 1600px;
+    margin-top: 60px;
+    margin-left: 100px;
+    margin-right:-110px;/* Adds space at top so it doesn't hide under header */
     padding: 0 40px;
     text-align: center;
     font-family: 'Playfair Display', serif;
-
+    transform: scale(1.1);
 }
 
 .page-title {
-    font-size: 2.5rem;
+    font-size: 2.7rem;
     margin-bottom: 5px;
     color: #2c3e50;
     text-transform: uppercase;
@@ -33,7 +34,7 @@
     font-style: italic;
     color: #777;
     margin-bottom: 40px;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
 }
 
 /* THE GRID - Forced 4 columns */
@@ -100,7 +101,7 @@
 
 /* TEXT STYLING */
 .season-card h3 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     margin: 10px 0 5px 0;
@@ -108,7 +109,7 @@
 }
 
 .season-card p {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     line-height: 1.5;
     color: #666;
     margin: 0;

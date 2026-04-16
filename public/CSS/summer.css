@@ -1,0 +1,116 @@
+/* Container and Layout */
+.summer-page {
+    background-color: #fbfcf8; /* Soft off-white */
+    min-height: 100vh;
+    margin-left: 200px;
+    padding: 60px 20px;
+    font-family: 'Playfair Display', serif; /* Or 'Times New Roman' */
+    color: #333;
+}
+
+/* Header Section */
+.summer-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.summer-header h1 {
+    font-size: 3rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.summer-header p {
+    font-style: italic;
+    color: #7f8c8d;
+    font-size: 1.2rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #95a5a6;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+.back-link:hover { color: #2c3e50; }
+
+/* The Grid */
+.fragrance-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* Individual Product Cards */
+.fragrance-card {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #eee;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.fragrance-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.img-wrapper {
+    background-color: #f0f7f9; /* Light aquatic blue background for images */
+    margin-bottom: 20px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.img-wrapper img {
+    max-width: 80%;
+    height: auto;
+    mix-blend-mode: multiply; /* Makes white-background images look seamless */
+}
+
+.fragrance-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.notes {
+    font-size: 0.9rem;
+    color: #16a085; /* Sea green color for notes */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.price {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+/* Button Styling */
+.buy-btn {
+    background: transparent;
+    border: 1px solid #333;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.buy-btn:hover {
+    background: #333;
+    color: white;
+}
