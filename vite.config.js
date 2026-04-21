@@ -10,8 +10,9 @@ export default defineConfig({
                 'resources/css/home.css',
                 'resources/css/FilterBar.css',
                 'resources/css/fragrance.css',
-                'resources/js/app.js',
+                'resources/js/app.js', 'resources/css/seasons.css'
             ],
+            
             refresh: true,
         }),
         tailwindcss(),

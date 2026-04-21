@@ -49,15 +49,13 @@
             white-space: nowrap;
         }
 
-
         nav a {
             color: #555;
             text-decoration: none;
             text-transform: uppercase;
             font-size: 16px;
             letter-spacing: 1.5px;
-            transition: color 0.3s, transform 0.3s; /* add transform */
-            display: inline-block; /* required for transform to work */
+            transition: 0.3s;
         }
 
         nav a:hover, nav a.active {
@@ -70,7 +68,6 @@
             padding-bottom: 5px;
         }
 
-
         .search-bar {
             text-align: center;
             width: 250px;
@@ -80,6 +77,11 @@
             outline: none;
             background: #fff;
             transition: width 0.4s ease-in-out;
+        }
+
+        .search-bar::placeholder {
+            color: transparent;
+            transition: color 0.3s ease;
         }
 
         .search-bar:focus,
