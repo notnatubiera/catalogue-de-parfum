@@ -7,7 +7,12 @@
         body { margin: 0; font-family: Times New Roman; }
 
         nav {
-            background: #F2EADF;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(242, 234, 223, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 20px 40px;
             border-bottom: 1px solid #eee;
             display: flex;
@@ -138,8 +143,68 @@
 
         }
 
+        .nav-middle {
+            position: relative;
+        }
+
+        .search-results {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 420px;
+            background: #fff;
+            border: 0.5px solid #ede8e0;
+            z-index: 2000;
+            max-height: 340px;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        .search-item {
+            display: flex;
+            flex-direction: column;
+            padding: 12px 18px;
+            text-decoration: none;
+            border-bottom: 0.5px solid #f0ebe3;
+            transition: background 0.15s;
+        }
+
+        .search-item:hover {
+            background: #f7f4ef;
+        }
+
+        .search-item-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            color: #1a1a1a;
+        }
+
+        .search-item-brand {
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #b8965a;
+            margin-top: 2px;
+        }
+
+        .search-empty {
+            padding: 16px 18px;
+            font-size: 12px;
+            color: #999;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+
+
+
+
+
 
     </style>
+
+    @stack('styles')
 </head>
 <body>
 
@@ -151,7 +216,8 @@
 
     <!-- search bararar -->
     <div class="nav-middle">
-        <input type="text" placeholder="Looking for a particular fragrance?" class="search-bar">
+        <input type="text" id="searchBar" placeholder="Looking for a particular fragrance?" class="search-bar" autocomplete="off">
+        <div id="searchResults" class="search-results" hidden></div>
     </div>
 
     <!-- right -->
