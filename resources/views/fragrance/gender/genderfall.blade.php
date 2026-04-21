@@ -42,7 +42,7 @@
     </div>
     <div class="fall-selection-wrapper">
         <div class="selection-header">
-            <span class="subtitle">SUMMER</span>
+            <span class="subtitle">FALL</span>
             <h1>Choose Your Essence</h1>
             <p>Find the perfect scent for a cool and cozy weather.</p>
         </div>
