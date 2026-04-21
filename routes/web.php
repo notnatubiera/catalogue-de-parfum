@@ -16,12 +16,37 @@ Route::get('/collection', function () {
 });
 Route::get('/season', function () {
     return view('season'); // This looks for a file named notes.blade.php
-});
+})->name('season');
 
-Route::get('/spring.index', function () {
-    return view('fragrance.spring'); // This looks for a file named notes.blade.php
-})->name('spring.index');
+
 use App\Http\Controllers\summercontroller;
 
 // This tells Laravel: When user goes to /summer, run the 'summer' function inside summercontroller
 Route::get('/summer.index', [summercontroller::class, 'summer'])->name('summer.index');
+// The bridge page where you choose Men/Women/Unisex
+Route::get('/summer/choose', function () {
+    return view('fragrance.gender.gendersummer');
+})->name('summer.choose');
+
+use App\Http\Controllers\springcontroller;
+Route::get('/spring/choose', function () {
+    return view('fragrance.gender.genderspring');
+})->name('spring.choose');
+
+// The main spring collection page (goes to the controller)
+Route::get('/spring/{gender?}', [springcontroller::class, 'spring'])->name('spring.index');
+
+use App\Http\Controllers\fallcontroller;
+Route::get('/fall/choose', function () {
+    return view('fragrance.gender.genderfall');
+})->name('fall.choose');
+
+// The main spring collection page (goes to the controller)
+Route::get('/fall/{gender?}', [fallcontroller::class, 'fall'])->name('fall.index');
+use App\Http\Controllers\wintercontroller;
+Route::get('/winter/choose', function () {
+    return view('fragrance.gender.genderwinter');
+})->name('winter.choose');
+
+// The main spring collection page (goes to the controller)
+Route::get('/winter/{gender?}', [wintercontroller::class, 'winter'])->name('winter.index');

@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;500&display=swap');
+
+/* Prevent body scroll */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Force no scrolling */
+
+}
+
+/* CHANGED: Soft minty-white background for a fresh feel */
+.summer-selection-wrapper {
+
+    height: 100vh;
+    width: 100vw;
+    background-color:#fcfaf7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Header Section */
+.selection-header {
+    margin-top: -50px;
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* CHANGED: Sage Green subtitle */
+.selection-header .subtitle {
+    display: block;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    color: #d98b63;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* CHANGED: Deep Moss Green for titles */
+.selection-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #1a2e35;
+    margin: 0 0 10px 0;
+}
+
+/* CHANGED: Muted leafy-grey for paragraph */
+.selection-header p {
+    color: #7d8a8e;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Grid Layout */
+.gender-options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 420px);
+    gap: 70px;
+    justify-content: center;
+}
+
+/* Option Cards */
+.option-card {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.image-box {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+    /* CHANGED: Very subtle green-tinted shadow */
+    box-shadow: 0 10px 30px rgba(52, 78, 65, 0.05);
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.card-info {
+    padding-top: 20px;
+    display: flex;            /* Turns the container into a flexbox */
+    justify-content: center;  /* Centers them horizontally */
+    align-items: baseline;    /* Aligns text along the bottom line */
+    gap: 15px;                /* Adds space between the title and discover */
+}
+
+/* Update the h2 to remove default margins that cause spacing issues */
+.card-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;        /* Slightly smaller to ensure it stays on one line */
+    letter-spacing: 2px;
+    margin: 0;                /* REMOVE ALL MARGINS */
+    color: #1a2e35;
+    text-transform: uppercase;
+}
+
+/* CHANGED: Sage Green discover text */
+.btn-discover {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #d98b63;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: letter-spacing 0.3s ease;
+}
+
+/* HOVER EFFECTS */
+.option-card:hover {
+    transform: translateY(-10px);
+}
+
+.option-card:hover .image-box img {
+    transform: scale(1.05);
+}
+
+.option-card:hover .btn-discover {
+    letter-spacing: 4px;
+}
+/* --- SPRING BACK BUTTON FIX --- */
+.back-container {
+    position: absolute;
+    top: 150px; /* Puts it below the search bar */
+    right: 50px; /* Pins it to the right */
+    z-index: 1000;
+    width: auto;  /* Prevents it from stretching */
+    height: auto;
+}
+
+.btn-back {
+    position: relative;
+    width: 180px;  /* Fixed width so it can't be a giant wall */
+    height: 50px;  /* Fixed height */
+    background: #fec195; /* Sage Green */
+    font-size: 13px;
+    font-weight: 700;
+    color: #181818;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    /* IMPORTANT: Keeps stars from being huge */
+    overflow: visible;
+}
+
+/* --- FIXING THE GIANT STARS --- */
+.star-1, .star-2, .star-3, .star-4, .star-5, .star-6 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: all 0.8s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+    pointer-events: none;
+
+}
+
+/* Force the SVGs inside to be tiny */
+.star-1 svg, .star-2 svg, .star-3 svg,
+.star-4 svg, .star-5 svg, .star-6 svg {
+    display: block;
+}
+
+/* Specific star sizes (Missing these caused the giant stars!) */
+.star-1 { width: 20px; }
+.star-2 { width: 12px; }
+.star-3 { width: 6px; }
+.star-4 { width: 8px; }
+.star-5 { width: 14px; }
+.star-6 { width: 5px; }
+
+/* --- FLYING ANIMATION --- */
+.btn-back:hover {
+    background: #d98b63;
+    transform: scale(1.05);
+}
+
+.btn-back:hover .star-1 { top: -80%; left: -30%;  }
+.btn-back:hover .star-2 { top: -25%; left: 10%; }
+.btn-back:hover .star-3 { top: 60%; left: 15%; }
+.btn-back:hover .star-4 { top: 30%; left: 80%; }
+.btn-back:hover .star-5 { top: 25%; left: 115%; }
+.btn-back:hover .star-6 { top: 5%; left: 65%; }
+
+.fil0 { fill: #fbc4ab; } /* Pink petal/star color */

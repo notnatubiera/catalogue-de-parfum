@@ -27,7 +27,7 @@
                 </form>
             </div>
 
-            <a href="{{ url('/summer/choose') }}" class="back-link">← Back to Gender</a>
+            <a href="{{ url('/fall/choose') }}" class="back-link">← Back to Gender</a>
         </header>
 
         <div class="fragrance-grid">

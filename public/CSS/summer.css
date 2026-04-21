@@ -1,17 +1,26 @@
-body, html {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+body, html {
+    margin-left: 0;
+    padding: 0;
     width: 100%;
-    background-color: #C2D6F4;
+    background-color: #E6F6FF;
 }
 
 .summer-page {
-    background-color: #C2D6F4;
+    background-color: #E6F6FF;
     min-height: 100vh;
-    width: 100%; /* Changed from margin-left */
+    width: 100%;
     padding: 60px 0;
+    display: flex;         /* Use Flexbox to align children */
+    flex-direction: column;
+    align-items: center;   /* This centers everything inside the container */
     font-family: 'Playfair Display', serif;
     color: #333;
+
 }
 
 /* New Filter Bar Styles */
@@ -45,10 +54,14 @@ body, html {
 .summer-header { text-align: center; margin-bottom: 50px; }
 .summer-header h1 { font-size: 3rem; letter-spacing: 4px; text-transform: uppercase; color: #2c3e50; }
 .fragrance-grid {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* justify-content centers the cards if they don't fill the whole row */
+    justify-content: center;
+    /* Changed 1fr to 280px so they don't stretch awkwardly */
+    grid-template-columns: repeat(auto-fit, 280px);
     gap: 40px;
     padding: 0 20px;
 }

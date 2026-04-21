@@ -35,17 +35,23 @@
             <div class="season-card">
                 <div class="image-wrapper">
                     <img src="{{ asset('images/autumn1.png') }}" alt="Autumn">
-                    <div class="overlay"><span>Explore Autumn</span></div>
+                    <a href="{{ route('fall.index') }}" class="overlay">
+                        <div class="overlay"><span>Explore Fall</span></div>
+                    </a>
+
                 </div>
-                <h3>Autumn</h3>
+                <h3>Fall</h3>
                 <p>Woody, spicy, and warm. Notes of amber and sandalwood.</p>
             </div>
 
             <!-- Winter -->
             <div class="season-card">
                 <div class="image-wrapper">
-                    <img src="{{ asset('images/winter1.png') }}" alt="Winter">
-                    <div class="overlay"><span>Explore Winter</span></div>
+                    <img src="{{ asset('images/winter1.png') }}" alt="Winter">'
+
+                    <a href="{{ route('winter.index') }}" class="overlay">
+                        <div class="overlay"><span>Explore Winter</span></div>
+                    </a>
                 </div>
                 <h3>Winter</h3>
                 <p>Deep, smoky, and gourmand. Notes of vanilla and incense.</p>
