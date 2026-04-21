@@ -1,0 +1,226 @@
+/* COLLECTION WRAPPER */
+.collection-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 25px;
+    padding: 60px 60px;
+    background: #f7f4ef;
+    align-items: flex-start;
+}
+
+/* FILTER SIDEBAR */
+.filter-sidebar {
+    min-width: 180px;
+    max-width: 200px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding: 1.5rem 1rem;
+}
+
+.filter-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.filter-title {
+    font-size: 16px;
+    font-weight: 400;
+    color: #999;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.clear-all {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: #b8965a;
+    border: 0.5px solid #b8965a;
+    border-radius: 0;
+    font-size: 10px;
+    font-weight: 400;
+    padding: 4px 10px;
+    cursor: pointer;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.clear-all:hover {
+    background: #b8965a;
+    color: #fff;
+    transform: scale(1.20);
+}
+
+/* Section labels */
+.filter-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: #b8965a;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 1.5rem 0 0.75rem;
+    padding-top: 1rem;
+    border-top: 0.5px solid #e0d9cf;
+    list-style: none;
+}
+
+.filter-label:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+/* Checkboxes */
+.filter-sidebar label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+}
+
+.filter-sidebar label:hover {
+    color: #1a1a1a;
+}
+
+.filter-sidebar input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+    accent-color: #b8965a;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* COLLECTION MAIN */
+.collection-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 36px;
+    border-bottom: 0.5px solid #ddd6ca;
+    padding-bottom: 16px;
+}
+
+.collection-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: #1a1a1a;
+}
+
+.collection-count {
+    font-size: 11px;
+    color: #b8965a;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-style: normal;
+}
+
+/* FRAGRANCE CARDS */
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.frag-card {
+    background: #fff;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border: 0.5px solid #ede8e0;
+    text-decoration: none;
+    color: inherit;
+}
+
+.frag-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.frag-image-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.frag-image-wrap img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* image zooms in on card hover */
+.frag-card:hover .frag-image-wrap img {
+    transform: scale(1.04);
+}
+
+.frag-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #fff;
+    font-size: 10px;
+    padding: 3px 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #b8965a;
+    border: 0.5px solid #b8965a;
+}
+
+.frag-info {
+    padding: 16px 14px 18px;
+    border-top: 0.5px solid #f0ebe3;
+}
+
+.frag-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: #1a1a1a;
+    letter-spacing: 0.02em;
+}
+
+.frag-brand {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #b8965a;
+    margin-bottom: 14px;
+}
+
+.frag-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #aaa;
+    border-top: 0.5px solid #f0ebe3;
+    padding-top: 12px;
+}
+
+.frag-stats strong {
+    color: #444;
+    font-weight: 500;
+}
