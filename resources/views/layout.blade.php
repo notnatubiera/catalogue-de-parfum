@@ -64,8 +64,8 @@
             transform-origin: center;
         }
 
-        .logo:hover::after,
-        .logo:focus::after {
+        .logo:not(.active):hover::after,
+        .logo:not(.active):focus::after {
             transform: scaleX(1);
         }
 
@@ -198,9 +198,9 @@
 
 
 
-
-
-
+        .container{
+            max-width: none!important;
+        }
 
     </style>
 
@@ -233,6 +233,10 @@
 </div>
 
 <!-- Make sure your CSS is linked in the <head> -->
-@vite(['resources/css/seasons.css', 'resources/js/app.js'])
+@vite(['resources/css/seasons.css',
+    'resources/css/FilterBar.css',
+    'resources/css/fragrance.css',
+    'resources/css/home.css',
+    'resources/js/app.js'])
 </body>
 </html>
