@@ -42,6 +42,30 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             white-space: nowrap;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: currentColor;
+            transform: scaleX(0);
+            transition: transform 0.4s ease-in-out;
+            transform-origin: center;
+        }
+
+        .logo:hover::after,
+        .logo:focus::after {
+            transform: scaleX(1);
+        }
+
+        .logo:focus {
+            outline:none;
         }
 
         nav a {
@@ -50,7 +74,8 @@
             text-transform: uppercase;
             font-size: 16px;
             letter-spacing: 1.5px;
-            transition: 0.3s;
+            position: relative;
+            transition: color 0.3s ease;
         }
 
         nav a:hover, nav a.active {
@@ -108,6 +133,12 @@
             border-color: #bfa37e;
         }
 
+        .logo:hover,
+        .logo:focus {
+
+        }
+
+
     </style>
 </head>
 <body>
@@ -127,7 +158,7 @@
     <div class="nav-right">
         <a href="/collection" class="{{ request()->is('collection') ? 'active' : '' }}">Brands</a>
         <a href="/season" class="{{ request()->is('season') ? 'active' : '' }}">Season</a>
-        <a href="/login" class="admin-login">Admin Login</a>
+        <a href="/admin" class="admin-login">Admin Login</a>
     </div>
 </nav>
 
