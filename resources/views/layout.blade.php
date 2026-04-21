@@ -62,7 +62,6 @@
             padding-bottom: 5px;
         }
 
-
         .search-bar {
             text-align: center;
             width: 250px;
@@ -74,32 +73,39 @@
             transition: width 0.4s ease-in-out;
         }
 
+        .search-bar::placeholder {
+            color: transparent;
+            transition: color 0.3s ease;
+        }
+
         .search-bar:focus,
         .search-bar:hover {
             border-color: #bfa37e;
             width: 400px;
         }
 
-
-        .add-button {
-            width: 35px;
-            height: 35px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-            flex-shrink: 0;
+        .search-bar:hover::placeholder,
+        .search-bar:focus::placeholder {
+            color: #888;
         }
 
-        .add-button:hover {
-            transform: scale(1.1);
-            background-color: #bfa37e;
+        .admin-login {
+            padding: 8px 20px;
+            background-color: #333;
+            color: white !important;
+            border-radius: 50px;
+            font-size: 13px !important;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #333;
+            white-space: nowrap;
+        }
+
+        .admin-login:hover {
+            background-color: transparent;
+            color: #bfa37e !important;
+            border-color: #bfa37e;
         }
 
     </style>
@@ -107,21 +113,21 @@
 <body>
 
 <nav>
-    <!-- Left Zone: Logo -->
+    <!-- logo -->
     <div class="nav-left">
         <a href="/main" class="logo {{ request()->is('main') ? 'active' : '' }}">Catalogue de Parfum</a>
     </div>
 
-    <!-- Middle Zone: Search Bar -->
+    <!-- search bararar -->
     <div class="nav-middle">
         <input type="text" placeholder="Looking for a particular fragrance?" class="search-bar">
     </div>
 
-    <!-- Right Zone: Navigation and Plus Button -->
+    <!-- right -->
     <div class="nav-right">
         <a href="/collection" class="{{ request()->is('collection') ? 'active' : '' }}">Brands</a>
         <a href="/season" class="{{ request()->is('season') ? 'active' : '' }}">Season</a>
-        <button class="add-button" title="Add fragrance?">+</button>
+        <a href="/login" class="admin-login">Admin Login</a>
     </div>
 </nav>
 
