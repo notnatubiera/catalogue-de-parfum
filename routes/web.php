@@ -22,11 +22,13 @@ Route::get('/season', function () {
 use App\Http\Controllers\summercontroller;
 
 // This tells Laravel: When user goes to /summer, run the 'summer' function inside summercontroller
-Route::get('/summer.index', [summercontroller::class, 'summer'])->name('summer.index');
-// The bridge page where you choose Men/Women/Unisex
+// Put this one FIRST
 Route::get('/summer/choose', function () {
     return view('fragrance.gender.gendersummer');
 })->name('summer.choose');
+
+// Put the controller one SECOND
+Route::get('/summer/{gender?}', [summercontroller::class, 'summer'])->name('summer.index');
 
 use App\Http\Controllers\springcontroller;
 Route::get('/spring/choose', function () {

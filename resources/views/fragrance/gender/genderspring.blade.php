@@ -49,7 +49,7 @@
 
         <div class="gender-options-container">
             <!-- MEN -->
-            <a href="{{ route('summer.index', ['gender' => 'men']) }}" class="option-card">
+            <a href="{{ route('spring.index', ['gender' => 'men']) }}" class="option-card">
                 <div class="image-box">
                     <img src="{{ asset('images/springfemale.jpg') }}" alt="Male">
                 </div>
@@ -60,7 +60,7 @@
             </a>
 
             <!-- WOMEN -->
-            <a href="{{ route('summer.index', ['gender' => 'women']) }}" class="option-card">
+            <a href="{{ route('spring.index', ['gender' => 'women']) }}" class="option-card">
                 <div class="image-box">
                     <img src="{{ asset('images/springmale.jpg') }}" alt="Women">
                 </div>
