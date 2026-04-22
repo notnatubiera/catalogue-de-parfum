@@ -3,6 +3,7 @@
 <head>
     <title>CATALOGUE DE PARFUM</title>
     <style>
+
         /* Base Reset */
         body { margin: 0; font-family: Times New Roman; }
 
@@ -16,24 +17,30 @@
         }
 
 
+        /* Update these to be exactly equal */
         .nav-left, .nav-right {
-            flex: 1;
+            flex: 1; /* Both sides get 1 part */
             display: flex;
             align-items: center;
         }
 
         .nav-middle {
-            flex: 2;
+            flex: 1; /* Give the middle 1 part as well to keep it 1:1:1 */
             display: flex;
             justify-content: center;
         }
 
+        /* Ensure the container doesn't have a fixed width or weird padding */
+        /* Find the .container class in your layout blade and update it */
+        /* Replace the .container block in your layout with this */
+
         .nav-right {
+
             justify-content: flex-end;
+
             gap: 30px;
+
         }
-
-
         .logo {
             color: #555;
             text-decoration: none;
@@ -101,7 +108,29 @@
             transform: scale(1.1);
             background-color: #bfa37e;
         }
+        /* 1. Define the Keyframes */
+        @keyframes pageFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px); /* Optional: adds a slight upward slide */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
+        /* 2. Apply it to your main page containers */
+        .summer,
+        .spring,
+        .fall,
+        .winter {
+            /* 0.6s duration, 'ease-out' for smoothness, 'forwards' to stay visible */
+            animation: pageFadeIn 0.6s ease-out forwards;
+
+            /* Ensures the page starts invisible before the animation begins */
+            opacity: 0;
+        }
     </style>
 </head>
 <body>

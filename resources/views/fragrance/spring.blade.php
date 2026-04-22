@@ -1,22 +1,27 @@
 @extends('layout')
 
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/spring.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/spring.css') }}">
 
-    <div class="summer-page">
-        <header class="summer-header">
-            <h1>Summer Collection</h1>
-            <p>Fresh citrus and cool sea salt for the warmer months.</p>
+    <div class="spring-page">
+        <header class="spring-header">
+            <h1>{{ $genderTitle }} Spring Collection</h1>
+            <p>Blooming florals and fresh green notes for the season of renewal.</p>
 
-            <!-- FILTER & SORT BAR -->
             <div class="filter-bar">
                 <form action="{{ url()->current() }}" method="GET" id="filterForm">
                     <select name="brand" onchange="this.form.submit()">
                         <option value="all">All Brands</option>
+                        <option value="Byredo" {{ request('brand') == 'Byredo' ? 'selected' : '' }}>Byredo</option>
+                        <option value="Calvin Klein" {{ request('brand') == 'Calvin Klein' ? 'selected' : '' }}>Calvin Klein</option>
+                        <option value="Chanel" {{ request('brand') == 'Chanel' ? 'selected' : '' }}>Chanel</option>
+                        <option value="Creed" {{ request('brand') == 'Creed' ? 'selected' : '' }}>Creed</option>
                         <option value="Dior" {{ request('brand') == 'Dior' ? 'selected' : '' }}>Dior</option>
-                        <option value="Versace" {{ request('brand') == 'Versace' ? 'selected' : '' }}>Versace</option>
-                        <option value="YSL" {{ request('brand') == 'YSL' ? 'selected' : '' }}>YSL</option>
-                        <option value="JPG" {{ request('brand') == 'JPG' ? 'selected' : '' }}>Jean Paul Gaultier</option>
+                        <option value="Escentric Molecules" {{ request('brand') == 'Escentric Molecules' ? 'selected' : '' }}>Escentric Molecules</option>
+                        <option value="Jo Malone" {{ request('brand') == 'Jo Malone' ? 'selected' : '' }}>Jo Malone</option>
+                        <option value="Le Labo" {{ request('brand') == 'Le Labo' ? 'selected' : '' }}>Le Labo</option>
+                        <option value="Maison Francis Kurkdjian" {{ request('brand') == 'Maison Francis Kurkdjian' ? 'selected' : '' }}>Maison Francis Kurkdjian</option>
+                        <option value="Yves Saint Laurent" {{ request('brand') == 'Yves Saint Laurent' ? 'selected' : '' }}>Yves Saint Laurent</option>
                     </select>
 
                     <select name="sort" onchange="this.form.submit()">
@@ -39,7 +44,6 @@
                     <span class="brand-name">{{ $item['brand'] }}</span>
                     <h3>{{ $item['name'] }}</h3>
                     <p class="notes">{{ $item['notes'] }}</p>
-                    <span class="price">${{ $item['price'] }}</span>
                     <button class="buy-btn">View Details</button>
                 </div>
             @endforeach

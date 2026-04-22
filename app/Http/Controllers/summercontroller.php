@@ -3,44 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class summercontroller extends Controller
 {
-    // 1. Added "= null" to make gender optional
     public function summer(Request $request, $gender = null)
     {
-        // 2. If no gender is picked yet, show the "choose gender" page
         if (!$gender) {
             return view('fragrance.gender.gendersummer');
         }
 
-        $fragrances = collect([
-            // --- MEN ---
-            ['name' => 'Sauvage EDT', 'brand' => 'Dior', 'gender' => 'men', 'notes' => 'BERGAMOT, PEPPER, AMBROXAN', 'price' => 110, 'image' => 'sauvage.jpg'],
-            ['name' => 'Eros Energy', 'brand' => 'Versace', 'gender' => 'men', 'notes' => 'BLOOD ORANGE, LIME', 'price' => 95, 'image' => 'eros_energy.jpg'],
-            ['name' => 'Le Beau', 'brand' => 'JPG', 'gender' => 'men', 'notes' => 'COCONUT, BERGAMOT', 'price' => 120, 'image' => 'lebeau.jpg'],
+        $allFragrances = collect([
+            // Masculine
+            ['name' => 'Sauvage', 'brand' => 'Dior', 'gender' => 'men', 'notes' => 'FRESH SPICY, AMBER, AROMATIC, CITRUS, WOODY', 'image' => 'sauvage.jpg'],
+            ['name' => 'Bleu de Chanel', 'brand' => 'Chanel', 'gender' => 'men', 'notes' => 'CITRUS, WOODY, FRESH, AROMATIC, SPICY', 'image' => 'bleu-de-chanel.jpg'],
+            ['name' => 'Aventus', 'brand' => 'Creed', 'gender' => 'men', 'notes' => 'FRUITY, SMOKY, WOODY, FRESH, MUSKY', 'image' => 'aventus.jpg'],
 
-            // --- WOMEN ---
-            ['name' => 'Miss Dior Blooming Bouquet', 'brand' => 'Dior', 'gender' => 'women', 'notes' => 'PEONY, ROSE, WHITE MUSK', 'price' => 140, 'image' => 'blooming.jpg'],
-            ['name' => 'Bright Crystal', 'brand' => 'Versace', 'gender' => 'women', 'notes' => 'YUZU, POMEGRANATE, LOTUS', 'price' => 105, 'image' => 'bright_crystal.jpg'],
-            ['name' => 'Libre Toilette', 'brand' => 'YSL', 'notes' => 'LAVENDER, ORANGE BLOSSOM, TEA', 'gender' => 'women', 'price' => 115, 'image' => 'libre_edt.jpg'],
-            ['name' => 'Classique Pride', 'brand' => 'JPG', 'gender' => 'women', 'notes' => 'CITRUS, NEROLI, MUSK', 'price' => 110, 'image' => 'classique.jpg'],
+            // Feminine
+            ['name' => 'Libre', 'brand' => 'Yves Saint Laurent', 'gender' => 'women', 'notes' => 'WHITE FLORAL, VANILLA, AROMATIC, CITRUS, MUSKY', 'image' => 'libre.jpg'],
 
-            // --- UNISEX ---
-            ['name' => 'Escale à Portofino', 'brand' => 'Dior', 'gender' => 'unisex', 'notes' => 'CITRON, PETITGRAIN, ALMOND', 'price' => 130, 'image' => 'portofino.jpg'],
-            ['name' => 'Gaultier Divine', 'brand' => 'JPG', 'gender' => 'unisex', 'notes' => 'SEA SALT, LILY, MERINGUE', 'price' => 145, 'image' => 'divine.jpg'],
-            ['name' => 'Saharienne', 'brand' => 'YSL', 'gender' => 'unisex', 'notes' => 'LEMON, PINK PEPPER, GINGER', 'price' => 120, 'image' => 'saharienne.jpg'],
+            // Unisex
+            ['name' => 'CK One', 'brand' => 'Calvin Klein', 'gender' => 'unisex', 'notes' => 'CITRUS, FRESH, GREEN, AROMATIC, MUSKY', 'image' => 'ck-one.jpg'],
+            ['name' => 'Wood Sage & Sea Salt', 'brand' => 'Jo Malone', 'gender' => 'unisex', 'notes' => 'FRESH, SALTY, MARINE, WOODY, MUSKY', 'image' => 'jomalone.jpg'],
+            ['name' => 'Molecule 01', 'brand' => 'Escentric Molecules', 'gender' => 'unisex', 'notes' => 'WOODY, MUSKY, AMBER, FRESH, MINIMALIST', 'image' => 'molecule-01.jpg'],
+            ['name' => 'Gypsy Water', 'brand' => 'Byredo', 'gender' => 'unisex', 'notes' => 'CITRUS, WOODY, VANILLA, FRESH, SPICY', 'image' => 'gypsy-water.jpg'],
         ]);
 
-        // Filter by Gender
-        $fragrances = $fragrances->where('gender', $gender);
+        // Logic to show selected gender + unisex items
+        $fragrances = $allFragrances->filter(function ($item) use ($gender) {
+            return $item['gender'] === $gender || $item['gender'] === 'unisex';
+        });
 
-        // Apply Brand filter
+        // Brand filtering (using strict names from the list)
         if ($request->brand && $request->brand != 'all') {
             $fragrances = $fragrances->where('brand', $request->brand);
         }
 
-        // Sort
+        // Sorting (A-Z / Z-A only, as requested)
         if ($request->sort == 'az') {
             $fragrances = $fragrances->sortBy('name');
         } elseif ($request->sort == 'za') {

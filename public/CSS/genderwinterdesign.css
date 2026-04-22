@@ -198,3 +198,7 @@ body, html {
     fill: #ffffff;
     filter: drop-shadow(0 0 5px #f1faff);
 }
+.gender-options-container{
+    animation: pageFadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}

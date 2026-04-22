@@ -8,25 +8,43 @@ class fallcontroller extends Controller
 {
     public function fall(Request $request, $gender = null)
     {
+        // 1. Show the selection page if no gender is picked
         if (!$gender) {
             return view('fragrance.gender.genderfall');
         }
 
-        $fragrances = collect([
-            // MEN
-            ['name' => 'Ombré Leather', 'brand' => 'Tom Ford', 'gender' => 'men', 'notes' => 'LEATHER, CARDAMOM', 'price' => 150, 'image' => 'ombre.jpg'],
-            ['name' => 'The One EDP', 'brand' => 'D&G', 'gender' => 'men', 'notes' => 'AMBER, TOBACCO, GINGER', 'price' => 115, 'image' => 'theone.jpg'],
-            // WOMEN
-            ['name' => 'Black Orchid', 'brand' => 'Tom Ford', 'gender' => 'women', 'notes' => 'TRUFFLE, ORCHID, PATCHOULI', 'price' => 160, 'image' => 'black_orchid.jpg'],
-            ['name' => 'Libre Intense', 'brand' => 'YSL', 'gender' => 'women', 'notes' => 'LAVENDER, VANILLA', 'price' => 130, 'image' => 'libre_intense.jpg'],
-            // UNISEX
-            ['name' => 'By the Fireplace', 'brand' => 'Replica', 'gender' => 'unisex', 'notes' => 'CHESTNUT, VANILLA, CLOVE', 'price' => 140, 'image' => 'fireplace.jpg'],
+        $allFragrances = collect([
+            // --- MEN (Checked for Fall in Sheet) ---
+            ['name' => 'Sauvage', 'brand' => 'Dior', 'gender' => 'men', 'notes' => 'FRESH SPICY, AMBER, CITRUS', 'price' => 110, 'image' => 'sauvage.jpg'],
+            ['name' => 'Bleu de Chanel', 'brand' => 'Chanel', 'gender' => 'men', 'notes' => 'CITRUS, WOODY, FRESH', 'price' => 130, 'image' => 'bleu_chanel.jpg'],
+            ['name' => 'Aventus', 'brand' => 'Creed', 'gender' => 'men', 'notes' => 'FRUITY, SMOKY, FRESH', 'price' => 435, 'image' => 'creed_aventus.jpg'],
+
+            // --- WOMEN (Checked for Fall in Sheet) ---
+            ['name' => 'La Vie Est Belle', 'brand' => 'Lancôme', 'gender' => 'women', 'notes' => 'SWEET, VANILLA, FRUITY', 'price' => 115, 'image' => 'la-vie-est-belle.jpg'],
+            ['name' => 'Good Girl', 'brand' => 'Carolina Herrera', 'gender' => 'women', 'notes' => 'SWEET, WHITE FLORAL, CACAO', 'price' => 120, 'image' => 'good-girl.jpg'],
+            ['name' => 'Libre', 'brand' => 'YSL', 'gender' => 'women', 'notes' => 'FLORAL, CITRUS, VANILLA', 'price' => 130, 'image' => 'libre.jpg'],
+
+            // --- UNISEX (Checked for Fall in Sheet - Appears in Both) ---
+            ['name' => 'Baccarat Rouge 540', 'brand' => 'MFK', 'gender' => 'unisex', 'notes' => 'AMBER, SWEET, WOODY', 'price' => 325, 'image' => 'baccarat-rouge-540.jpg'],
+            ['name' => 'Black Orchid', 'brand' => 'Tom Ford', 'gender' => 'unisex', 'notes' => 'EARTHY, FLORAL, SPICY', 'price' => 160, 'image' => 'black-orchid.jpg'],
+            ['name' => 'Santal 33', 'brand' => 'Le Labo', 'gender' => 'unisex', 'notes' => 'WOODY, LEATHER, SPICY', 'price' => 310, 'image' => 'santal-33.jpg'],
         ]);
 
-        $fragrances = $fragrances->where('gender', $gender);
+        // Filter to include chosen gender + unisex
+        $fragrances = $allFragrances->filter(function ($item) use ($gender) {
+            return $item['gender'] === $gender || $item['gender'] === 'unisex';
+        });
 
+        // Brand filtering
         if ($request->brand && $request->brand != 'all') {
             $fragrances = $fragrances->where('brand', $request->brand);
+        }
+
+        // Sorting
+        if ($request->sort == 'az') {
+            $fragrances = $fragrances->sortBy('name');
+        } elseif ($request->sort == 'za') {
+            $fragrances = $fragrances->sortByDesc('name');
         }
 
         return view('fragrance.fall', [

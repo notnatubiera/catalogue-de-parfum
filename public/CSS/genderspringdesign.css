@@ -202,3 +202,9 @@ body, html {
 .btn-back:hover .star-6 { top: 5%; left: 65%; }
 
 .fil0 { fill: #fbc4ab; } /* Pink petal/star color */
+/* Make the grid items wait slightly for the header to fade in first */
+.gender-options-container{
+    animation: pageFadeIn 0.8s ease-out forwards;
+    opacity: 0;
+}
+

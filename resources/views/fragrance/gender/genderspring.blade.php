@@ -40,6 +40,9 @@
             </button>
         </a>
     </div>
+    <a href="{{ url('/spring/men') }}" class="gender-btn"></a>
+
+    <a href="{{ url('/spring/women') }}" class="gender-btn"></a>
     <div class="spring-selection-wrapper">
         <div class="selection-header">
             <span class="subtitle">SPRING</span>

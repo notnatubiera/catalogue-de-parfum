@@ -40,6 +40,9 @@
             </button>
         </a>
     </div>
+    <a href="{{ url('/winter/men') }}" class="gender-btn"></a>
+
+    <a href="{{ url('/winter/women') }}" class="gender-btn"></a>
     <div class="winter-selection-wrapper">
         <div class="selection-header">
             <span class="subtitle">WINTER</span>
@@ -69,7 +72,6 @@
                     <span class="btn-discover">Discover &rarr;</span>
                 </div>
             </a>
-
         </div>
     </div>
 @endsection

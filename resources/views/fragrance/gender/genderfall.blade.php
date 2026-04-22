@@ -4,6 +4,7 @@
     <!-- Linking your NEW dedicated CSS file -->
     <link rel="stylesheet" href="{{ asset('CSS/genderfalldesign.css') }}">
     <div class="back-container">
+
         <a href="{{ route('season') }}">
             <button class="btn-back">
                 BACK TO SEASONS
@@ -39,6 +40,9 @@
                 </div>
             </button>
         </a>
+        <a href="{{ url('/fall/men') }}" class="gender-btn"></a>
+
+        <a href="{{ url('/fall/women') }}" class="gender-btn"></a>
     </div>
     <div class="fall-selection-wrapper">
         <div class="selection-header">
@@ -48,8 +52,10 @@
         </div>
 
         <div class="gender-options-container">
+
             <!-- MEN -->
             <a href="{{ route('fall.index', ['gender' => 'men']) }}" class="option-card">
+
                 <div class="image-box">
                     <img src="{{ asset('images/male.jpg') }}" alt="Male">
                 </div>
