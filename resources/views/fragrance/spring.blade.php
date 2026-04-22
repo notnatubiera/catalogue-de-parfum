@@ -37,14 +37,17 @@
 
         <div class="fragrance-grid">
             @foreach($fragrances as $item)
-                <div class="fragrance-card">
-                    <div class="img-wrapper">
-                        <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['name'] }}">
+                <div class="fragrance-card"> <div class="img-wrapper">
+                        <img src="{{ asset('/images/' . $item['image']) }}" alt="{{ $item['name'] }}">
                     </div>
+
                     <span class="brand-name">{{ $item['brand'] }}</span>
                     <h3>{{ $item['name'] }}</h3>
                     <p class="notes">{{ $item['notes'] }}</p>
-                    <button class="buy-btn">View Details</button>
+
+                    <a href="{{ route('fragrance.show', ['name' => $item['name'], 'season' => 'spring', 'gender' => strtolower($genderTitle)]) }}" class="buy-btn">
+                        View Details
+                    </a>
                 </div>
             @endforeach
         </div>

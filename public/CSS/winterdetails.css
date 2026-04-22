@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.details-page {
+    /* Light Winter Palette: Frosted glass to pale arctic sky */
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.details-wrapper {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    /* Pure white frost effect */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    /* Subtle cool blue shadow */
+    box-shadow: 0 25px 50px rgba(18bcc, 204, 215, 0.2);
+    overflow: hidden;
+    animation: slideUp 0.8s ease-out;
+}
+
+.image-section {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    border-right: 1px solid #e2e8f0;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.05));
+    transition: transform 0.5s ease;
+}
+
+.image-section img:hover {
+    transform: scale(1.05);
+}
+
+.info-section {
+    flex: 1.2;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-tag {
+    font-size: 0.8rem;
+    color: #64748b; /* Cool Slate Silver */
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.info-section h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    color: #1e293b; /* Deep Winter Slate */
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+    row-gap: 20px;
+    margin-bottom: 35px;
+    padding: 25px 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.stat {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+}
+
+.stat span {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: #94a3b8; /* Muted frost gray */
+    letter-spacing: 2px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    min-width: 90px;
+}
+
+.stat strong {
+    font-size: 0.95rem;
+    color: #334155;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.notes-box h3, .notes-graph-container h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    color: #1e293b;
+}
+
+.notes-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* Updated Bar Graph: Icy Blue to Deep Slate */
+.accord-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.accord-label {
+    width: 120px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #475569;
+    font-weight: 500;
+}
+
+.bar-wrapper {
+    flex-grow: 1;
+    height: 10px;
+    background: #f1f5f9;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar-fill {
+    height: 100%;
+    /* Gradient: Frozen Water to Deep Ice */
+    background: linear-gradient(90deg, #93c5fd 0%, #3b82f6 100%);
+    border-radius: 20px;
+    transform-origin: left;
+    animation: growBar 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.back-btn {
+    margin-top: auto;
+    text-decoration: none;
+    color: #64748b;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    color: #3b82f6;
+    transform: translateX(-5px);
+}
+
+@keyframes growBar {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    .details-wrapper { flex-direction: column; }
+    .image-section, .info-section { padding: 40px; }
+    .info-section h1 { font-size: 2.5rem; }
+}

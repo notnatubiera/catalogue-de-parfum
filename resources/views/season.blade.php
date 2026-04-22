@@ -49,7 +49,7 @@
                 <div class="image-wrapper">
                     <img src="{{ asset('images/winter1.png') }}" alt="Winter">'
 
-                    <a href="{{ route('winter.index') }}" class="overlay">
+                    <a href="{{ route('winter.index', ['gender' => 'men']) }}" class="overlay">
                         <div class="overlay"><span>Explore Winter</span></div>
                     </a>
                 </div>

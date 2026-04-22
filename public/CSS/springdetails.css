@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;500;700&display=swap');
+/* 1. Force the reset at the very top */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* This is the secret to removing the side white space */
+}
+
+.details-page {
+    /* Use the exact same background logic as your spring-page */
+    background: linear-gradient(135deg, #f0faf4 0%, #e6f2eb 100%);
+    min-height: 100vh;
+    width: 100%; /* Change 100vw to 100% to avoid scrollbar gaps */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px; /* Added slight side padding for mobile safety */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.details-wrapper {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    background: rgba(255, 255, 255, 0.75); /* Slightly more opaque for better contrast */
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 25px 50px rgba(123, 160, 138, 0.1); /* Green-tinted shadow like your cards */
+    overflow: hidden;
+    animation: slideUp 0.8s ease-out;
+}
+
+/* Adjust the Left Side to match your Collection's img-wrapper style */
+.image-section {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    border-right: 1px solid #eef3f0;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    /* This shadow makes the bottle "pop" without stretching the container */
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.08));
+    transition: transform 0.5s ease;
+}
+.image-section img:hover {
+    transform: scale(1.05);
+}
+
+/* Right Side: Content */
+.info-section {
+    flex: 1.2;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-tag {
+    font-size: 0.8rem;
+    color: #7ba08a; /* Spring Moss Green */
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.info-section h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    color: #2c3632;
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 40px;
+    padding: 25px 0;
+    border-top: 1px solid #dce6e0;
+    border-bottom: 1px solid #dce6e0;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #a5b5ab;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.stat strong {
+    font-size: 1rem;
+    color: #3d4a46;
+    font-weight: 500;
+}
+
+/* Main Accords / Notes Box */
+.notes-box h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    color: #2c3632;
+}
+
+.notes-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #5a6e65;
+    line-height: 1.6;
+}
+
+/* Back Button */
+.back-btn {
+    margin-top: auto;
+    text-decoration: none;
+    color: #7ba08a;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    color: #3d4a46;
+    transform: translateX(-5px);
+}
+
+/* Simple Animation */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive for Mobile */
+@media (max-width: 900px) {
+    .details-wrapper {
+        flex-direction: column;
+    }
+    .image-section {
+        padding: 40px;
+    }
+    .info-section {
+        padding: 40px;
+    }
+    .info-section h1 {
+        font-size: 2.5rem;
+    }
+}
+/* Container Styling */
+.notes-graph-container {
+    margin-top: 30px;
+}
+
+.notes-graph-container h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #a5b5ab;
+    margin-bottom: 20px;
+}
+
+/* The Bar Rows */
+.accord-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.accord-label {
+    width: 120px; /* Fixed width for alignment */
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #3d4a46;
+    font-weight: 500;
+}
+
+.bar-wrapper {
+    flex-grow: 1;
+    height: 12px;
+    background: rgba(238, 243, 240, 0.5); /* Light trough */
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* The Animated Bar */
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #b8d8c0 0%, #7ba08a 100%);
+    border-radius: 20px;
+    transform-origin: left;
+    animation: growBar 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered animation for a premium feel */
+.accord-item:nth-child(2) .bar-fill { animation-delay: 0.1s; }
+.accord-item:nth-child(3) .bar-fill { animation-delay: 0.2s; }
+.accord-item:nth-child(4) .bar-fill { animation-delay: 0.3s; }
+.accord-item:nth-child(5) .bar-fill { animation-delay: 0.4s; }
+
+@keyframes growBar {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+/* Responsive tweak */
+@media (max-width: 600px) {
+    .accord-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .accord-label {
+        margin-bottom: 5px;
+    }
+    .bar-wrapper {
+        width: 100%;
+    }
+}

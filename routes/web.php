@@ -51,4 +51,10 @@ Route::get('/winter/choose', function () {
 })->name('winter.choose');
 
 // The main spring collection page (goes to the controller)
-Route::get('/winter/{gender?}', [wintercontroller::class, 'winter'])->name('winter.index');
+// Details Route (Works for all seasons)
+Route::get('/fragrance/details/{name}/{season}/{gender}', [springcontroller::class, 'show'])->name('fragrance.show');
+
+// Collection Routes
+Route::get('/summer/{gender}', [springcontroller::class, 'summer'])->name('summer.index');
+Route::get('/fall/{gender}', [springcontroller::class, 'fall'])->name('fall.index');
+Route::get('/winter/{gender}', [springcontroller::class, 'winter'])->name('winter.index');

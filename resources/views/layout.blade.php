@@ -154,8 +154,7 @@
     </div>
 </nav>
 
-<div class="container">
-    @yield('content')
+<div class="container-fluid p-0"> @yield('content')
 </div>
 
 <!-- Make sure your CSS is linked in the <head> -->

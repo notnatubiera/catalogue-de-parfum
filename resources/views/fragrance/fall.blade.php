@@ -35,16 +35,24 @@
             <a href="{{ url('/fall/choose') }}" class="back-link">← Back to Gender</a>
         </header>
 
+
         <div class="fragrance-grid">
             @foreach($fragrances as $item)
                 <div class="fragrance-card">
                     <div class="img-wrapper">
+                        {{-- Ensure filenames are lowercase with dashes like "wood-sage-sea-salt.jpg" --}}
                         <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['name'] }}">
                     </div>
                     <span class="brand-name">{{ $item['brand'] }}</span>
                     <h3>{{ $item['name'] }}</h3>
                     <p class="notes">{{ $item['notes'] }}</p>
-                    <button class="buy-btn">View Details</button>
+                    <a href="{{ route('fragrance.show', [
+    'name' => $item['name'],
+    'season' => 'fall',
+    'gender' => strtolower($genderTitle)
+]) }}" class="buy-btn">
+                        View Details
+                    </a>
                 </div>
             @endforeach
         </div>

@@ -43,7 +43,13 @@
                     <span class="brand-name">{{ $item['brand'] }}</span>
                     <h3>{{ $item['name'] }}</h3>
                     <p class="notes">{{ $item['notes'] }}</p>
-                    <button class="buy-btn">View Details</button>
+                    <a href="{{ route('fragrance.show', [
+    'name' => $item['name'],
+    'season' => 'summer',
+    'gender' => strtolower($genderTitle)
+]) }}" class="buy-btn">
+                        View Details
+                    </a>
                 </div>
             @endforeach
         </div>

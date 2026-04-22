@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/winter.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/winter.css') }}">
 
     <div class="winter-page">
         <header class="winter-header">
@@ -37,17 +37,24 @@
             <a href="{{ url('/winter/choose') }}" class="back-link">← Back to Gender</a>
         </header>
 
+
         <div class="fragrance-grid">
             @foreach($fragrances as $item)
                 <div class="fragrance-card">
                     <div class="img-wrapper">
-                        {{-- This automatically converts "Baccarat Rouge 540" to "baccarat-rouge-540.jpg" --}}
-                        <img src="{{ asset('images/' . Str::slug($item['name']) . '.jpg') }}" alt="{{ $item['name'] }}">
+                        {{-- Ensure filenames are lowercase with dashes like "wood-sage-sea-salt.jpg" --}}
+                        <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['name'] }}">
                     </div>
                     <span class="brand-name">{{ $item['brand'] }}</span>
                     <h3>{{ $item['name'] }}</h3>
                     <p class="notes">{{ $item['notes'] }}</p>
-                    <button class="buy-btn">View Details</button>
+                    <a href="{{ route('fragrance.show', [
+    'name' => $item['name'],
+    'season' => 'winter',
+    'gender' => strtolower($genderTitle)
+]) }}" class="buy-btn">
+                        View Details
+                    </a>
                 </div>
             @endforeach
         </div>
