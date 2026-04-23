@@ -13,11 +13,17 @@ return new class extends Migration
     {
         Schema::create('perfumes', function (Blueprint $table) {
             $table->id();
-            $table->json('sizes')->nullable();
             $table->string('name');
             $table->foreignId('brand_id')->constrained()->onDelete('cascade');
             $table->text('description')->nullable();
             $table->string('image')->nullable();
+            $table->string('hero_image')->nullable(); // Ensure this is here!
+            $table->boolean('is_featured')->default(false);
+            $table->text('time_of_day')->nullable(); // For the array cast
+            $table->string('longevity')->nullable();
+            $table->string('sillage')->nullable();
+            $table->string('price')->nullable();
+            $table->string('gender')->nullable();
             $table->timestamps();
         });
     }

@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class   DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
@@ -21,11 +21,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-        $this->call(PerfumesTableSeeder::class);
-        $this->call(BrandsTableSeeder::class);
-        $this->call(OccasionsTableSeeder::class);
-        $this->call(SeasonsTableSeeder::class);
-        $this->call(OccasionPerfumeTableSeeder::class);
-        $this->call(PerfumeSeasonTableSeeder::class);
+        $this->call([
+            BrandsTableSeeder::class,        // 1. Create Brands first
+            OccasionsTableSeeder::class,     // 2. Create Occasion options
+            SeasonsTableSeeder::class,       // 3. Create Season options
+            PerfumesTableSeeder::class,      // 4. Create Perfumes (Now they can find their Brands!)
+            OccasionPerfumeTableSeeder::class, // 5. Link Perfumes to Occasions
+            PerfumeSeasonTableSeeder::class,   // 6. Link Perfumes to Seasons
+        ]);
     }
 }

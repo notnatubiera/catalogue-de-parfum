@@ -74,7 +74,7 @@
                        data-gender="{{ strtolower($fragrance->gender ?? '') }}"
                        data-seasons="{{ $fragrance->seasons->pluck('name')->map(fn($s) => strtolower($s))->implode(',') }}"
                        data-occasions="{{ $fragrance->occasions?->pluck('name')->map(fn($o) => strtolower($o))->implode(',') ?? '' }}"
-                    >>
+                    >
                         <div class="frag-image-wrap">
                             <img src="{{ asset('storage/' . $fragrance->image) }}"
                                  alt="{{ $fragrance->name }}"

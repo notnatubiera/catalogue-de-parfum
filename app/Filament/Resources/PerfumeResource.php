@@ -46,7 +46,10 @@ class PerfumeResource extends Resource
                         ->label('Bottle Image (Grid/Profile)')
                         ->image()
                         ->directory('fragrances')
-                        ->required(),
+                        ->required()
+                        ->disk('public') // Explicitly tell it to use the public disk
+                        ->visibility('public')
+                        ->preserveFilenames(),
                     TextInput::make('price')
                         ->placeholder('e.g. $$$$')
                         ->label('Price Range')
@@ -113,7 +116,10 @@ class PerfumeResource extends Resource
                         ->label('Hero Background (Carousel Only)')
                         ->image()
                         ->directory('hero-images')
-                        ->helperText('Upload a landscape image for the homepage hero section.'),
+                        ->helperText('Upload a landscape image for the homepage hero section.')
+                        ->disk('public') // Explicitly tell it to use the public disk
+                        ->visibility('public')
+                        ->preserveFilenames(),
                 ])->columns(2),
 
 
