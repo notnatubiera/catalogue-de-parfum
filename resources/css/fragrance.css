@@ -1,0 +1,288 @@
+.frag-detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+    background: #f7f4ef;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.frag-back {
+    display: inline-block;
+    margin-bottom: 32px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #b8965a;
+    transition: color 0.25s ease;
+}
+
+.frag-back:hover {
+    color: #1a1a1a;
+}
+
+.frag-detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 60px;
+    align-items: start;
+}
+
+/* LEFT — image */
+.frag-detail-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background: #fff;
+    border: 0.5px solid #ede8e0;
+    overflow: hidden;
+}
+
+.frag-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.frag-detail-image.no-image::after {
+    content: 'Image coming soon';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b8965a;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.frag-detail-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    padding: 4px 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #b8965a;
+    border: 0.5px solid #b8965a;
+}
+
+/* RIGHT — info */
+.frag-detail-info {
+    padding-top: 10px;
+}
+
+.frag-detail-brand {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #b8965a;
+    margin: 0 0 14px;
+}
+
+.frag-detail-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1.05;
+    color: #1a1a1a;
+    margin: 0 0 24px;
+}
+
+.frag-detail-desc {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin: 0 0 36px;
+    max-width: 500px;
+}
+
+.frag-detail-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 30px;
+    border-top: 0.5px solid #ddd6ca;
+    border-bottom: 0.5px solid #ddd6ca;
+    padding: 22px 0;
+    margin-bottom: 30px;
+}
+
+.frag-detail-stats div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.frag-detail-stats span {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #b8965a;
+}
+
+.frag-detail-stats strong {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #1a1a1a;
+}
+
+/* Meta chips */
+.frag-detail-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.meta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.meta-label {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #b8965a;
+    min-width: 100px;
+}
+
+.meta-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.meta-chip {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 2px;
+    border: 0.5px solid #ddd6ca;
+}
+
+.meta-chip.on {
+    background: #1a1a1a;
+    color: #fff;
+    border-color: #1a1a1a;
+}
+
+.meta-chip.off {
+    background: transparent;
+    color: #bbb;
+}
+
+/* ACCORDS GRAPH — luxury redesign */
+.accords-panel {
+    margin-top: 70px;
+    padding: 40px 40px 48px;
+    background: #fff;
+    border: 0.5px solid #ede8e0;
+}
+
+.accords-title {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #b8965a;
+    margin: 0 0 36px;
+    padding-bottom: 16px;
+    border-bottom: 0.5px solid #ede8e0;
+}
+
+.accords-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* each row = label + bar */
+.accord-row {
+    display: grid;
+    grid-template-columns: 130px 1fr auto;
+    align-items: center;
+    gap: 20px;
+    cursor: default;
+}
+
+.accord-label {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #888;
+    text-align: right;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.accord-row:hover .accord-label {
+    color: #1a1a1a;
+}
+
+.accord-track {
+    height: 22px;
+    background: #f0ebe3;
+    position: relative;
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.accord-bar {
+    height: 100%;
+    border-radius: 1px;
+    transition: filter 0.3s ease, height 0.3s ease;
+    position: relative;
+}
+
+.accord-row:hover .accord-track {
+    height: 30px; /* expands slightly on hover */
+}
+
+.accord-row:hover .accord-bar {
+    filter: brightness(1.12);
+}
+
+.accord-pct {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: #ccc;
+    min-width: 32px;
+    text-align: right;
+    transition: color 0.3s ease;
+}
+
+.accord-row:hover .accord-pct {
+    color: #b8965a;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .frag-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .frag-detail-title {
+        font-size: 48px;
+    }
+}
