@@ -2,256 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Perfume;
 use Illuminate\Http\Request;
 
 class FragranceController extends Controller
 {
-    public static function all(): array
-    {
-        return [
-            [
-                'slug' => 'baccarat-rouge-540',
-                'name' => 'Baccarat Rouge 540',
-                'brand' => 'Maison Francis Kurkdjian',
-                'image' => 'images/Bacarat.jpg',
-                'hero_image' => 'images/bacarat_540 (1).jpg',
-                'longevity' => 'Very Long Lasting',
-                'sillage' => 'Strong',
-                'gender' => 'Unisex',
-                'price' => '$$$$$',
-                'badge' => 'Extrait',
-                'description' => 'A sweet, airy blend of saffron, amber, and woods with a clean, glowing vibe. It smells luxurious and lasts all day.',
-                'seasons' => ['winter', 'spring', 'fall'],
-                'time' => ['night'],
-                'occasions' => ['date', 'formal'],
-                'accords' => ['amber', 'sweet', 'woody', 'warm spicy', 'musky'],
-            ],
-            [
-                'slug' => 'sauvage',
-                'name' => 'Sauvage',
-                'brand' => 'Dior',
-                'image' => 'images/DiorSa.jpg',
-                'longevity' => 'Long Lasting',
-                'sillage' => 'Strong',
-                'gender' => 'Masculine',
-                'price' => '$$$',
-                'badge' => 'EDP',
-                'description' => 'A radically fresh composition, raw and noble all at once — inspired by wide-open spaces.',
-                'seasons' => ['winter', 'spring', 'summer', 'fall'],
-                'time' => ['day'],
-                'occasions' => ['daily', 'office', 'date'],
-                'accords' => ['fresh spicy', 'amber', 'aromatic', 'citrus', 'woody'],
-            ],
-            [
-                'slug' => 'bleu-de-chanel',
-                'name' => 'Bleu de Chanel',
-                'brand' => 'Chanel',
-                'image' => 'images/Bleu.jpg',
-                'longevity' => 'Long Lasting',
-                'sillage' => 'Moderate',
-                'gender' => 'Masculine',
-                'price' => '$$$$',
-                'badge' => 'EDP',
-                'description' => 'An aromatic-woody fragrance, clean and confident — a timeless signature of refined masculinity.',
-                'seasons' => ['winter', 'spring', 'summer', 'fall'],
-                'time' => ['day'],
-                'occasions' => ['office', 'formal', 'daily'],
-                'accords' => ['citrus', 'woody', 'fresh', 'aromatic', 'warm spicy'],
-            ],
-            [
-                'slug' => 'black-orchid',
-                'name' => 'Black Orchid',
-                'brand' => 'Tom Ford',
-                'image' => 'images/BlackOrchid.jpg',
-                'longevity' => 'Very Long Lasting',
-                'sillage' => 'Enormous',
-                'gender' => 'Unisex',
-                'price' => '$$$$',
-                'badge' => 'EDP',
-                'description' => 'A luxurious, sensual fragrance of rich, dark accords and an alluring potion of black orchid and spice.',
-                'seasons' => ['winter'],
-                'time' => ['night'],
-                'occasions' => ['formal', 'date'],
-                'accords' => ['earthy', 'floral', 'woody', 'sweet', 'warm spicy'],
-            ],
-            [
-                'slug' => 'ck-one',
-                'name' => 'CK One',
-                'brand' => 'Calvin Klein',
-                'image' => 'images/CkOne.jpg',
-                'longevity' => 'Moderate',
-                'sillage' => 'Moderate',
-                'gender' => 'Unisex',
-                'price' => '$$',
-                'badge' => 'EDT',
-                'description' => 'A clean, crisp, refreshing citrus scent — the iconic shared fragrance for everyday wear.',
-                'seasons' => ['spring', 'summer'],
-                'time' => ['day'],
-                'occasions' => ['daily', 'sport'],
-                'accords' => ['citrus', 'fresh', 'green', 'aromatic', 'musky'],
-            ],
-            [
-                'slug' => 'aventus',
-                'name' => 'Aventus',
-                'brand' => 'Creed',
-                'image' => 'images/CreedAventus.jpg',
-                'longevity' => 'Long Lasting',
-                'sillage' => 'Strong',
-                'gender' => 'Masculine',
-                'price' => '$$$$$',
-                'badge' => 'EDP',
-                'description' => 'A sophisticated scent celebrating strength, power, and success — fruity, smoky, and bold.',
-                'seasons' => ['winter', 'spring', 'summer', 'fall'],
-                'time' => ['day'],
-                'occasions' => ['office', 'formal', 'date'],
-                'accords' => ['fruity', 'smoky', 'woody', 'fresh', 'musky'],
-            ],
-            [
-                'slug' => 'la-vie-est-belle',
-                'name' => 'La Vie Est Belle',
-                'brand' => 'Lancôme',
-                'image' => 'images/Lancome_Paris.jpg',
-                'longevity' => 'Eternal',
-                'sillage' => 'Strong',
-                'gender' => 'Feminine',
-                'price' => '$$$',
-                'badge' => 'EDP',
-                'description' => 'A sweet gourmand with iris, patchouli, and praline — an ode to joy, freedom, and beauty.',
-                'seasons' => ['winter', 'fall'],
-                'time' => ['night'],
-                'occasions' => ['date', 'formal'],
-                'accords' => ['sweet', 'vanilla', 'powdery', 'fruity', 'floral'],
-            ],
-            [
-                'slug' => 'good-girl',
-                'name' => 'Good Girl',
-                'brand' => 'Carolina Herrera',
-                'image' => 'images/GoodGirl.jpg',
-                'longevity' => 'Very Long Lasting',
-                'sillage' => 'Strong',
-                'gender' => 'Feminine',
-                'price' => '$$$',
-                'badge' => 'EDP',
-                'description' => 'A seductive duality of light and dark — tuberose and jasmine meet cocoa and tonka bean.',
-                'seasons' => ['winter', 'fall'],
-                'time' => ['night'],
-                'occasions' => ['date', 'formal'],
-                'accords' => ['sweet', 'white floral', 'warm spicy', 'cacao', 'vanilla'],
-            ],
-            [
-                'slug' => 'santal-33',
-                'name' => 'Santal 33',
-                'brand' => 'Le Labo',
-                'image' => 'images/LeLaboSan.jpg',
-                'longevity' => 'Long Lasting',
-                'sillage' => 'Moderate',
-                'gender' => 'Unisex',
-                'price' => '$$$$$',
-                'badge' => 'EDP',
-                'description' => 'An evocative, smoky sandalwood that feels at once modern and timeless — a scent of open landscapes.',
-                'seasons' => ['winter', 'spring', 'summer', 'fall'],
-                'time' => ['day'],
-                'occasions' => ['daily', 'office'],
-                'accords' => ['woody', 'leather', 'smoky', 'musky', 'warm spicy'],
-            ],
-            [
-                'slug' => 'libre',
-                'name' => 'Libre',
-                'brand' => 'Yves Saint Laurent',
-                'image' => 'images/YSL_LIBRE.jpg',
-                'longevity' => 'Long Lasting',
-                'sillage' => 'Strong',
-                'gender' => 'Feminine',
-                'price' => '$$$',
-                'badge' => 'EDP',
-                'description' => 'The scent of freedom — a burst of lavender, orange blossom, and musk for the bold.',
-                'seasons' => ['winter', 'spring', 'summer', 'fall'],
-                'time' => ['day', 'night'],
-                'occasions' => ['daily', 'date', 'formal'],
-                'accords' => ['white floral', 'vanilla', 'aromatic', 'citrus', 'musky'],
-            ],
-            [
-                'slug' => 'eros',
-                'name' => 'Eros',
-                'brand' => 'Versace',
-                'image' => 'images/Eros.jpg',
-                'longevity' => 'Long Lasting',
-                'sillage' => 'Strong',
-                'gender' => 'Masculine',
-                'price' => '$$$',
-                'badge' => 'EDT',
-                'description' => 'An intense and passionate fragrance — mint, vanilla, and tonka bean shaped for seduction.',
-                'seasons' => ['winter', 'fall'],
-                'time' => ['night'],
-                'occasions' => ['date', 'formal'],
-                'accords' => ['vanilla', 'fresh', 'sweet', 'woody', 'aromatic'],
-            ],
-            [
-                'slug' => 'alien',
-                'name' => 'Alien',
-                'brand' => 'Mugler',
-                'image' => 'images/Alien.jpg',
-                'longevity' => 'Eternal',
-                'sillage' => 'Enormous',
-                'gender' => 'Feminine',
-                'price' => '$$$$',
-                'badge' => 'EDP',
-                'description' => 'A hypnotic, luminous scent of jasmine, amber, and wood — mysterious and magnetic.',
-                'seasons' => ['winter'],
-                'time' => ['night'],
-                'occasions' => ['formal', 'date'],
-                'accords' => ['white floral', 'amber', 'woody', 'musky', 'floral'],
-            ],
-            [
-                'slug' => 'wood-sage-sea-salt',
-                'name' => 'Wood Sage & Sea Salt',
-                'brand' => 'Jo Malone',
-                'image' => 'images/JoMalonWoodSage.jpg',
-                'longevity' => 'Moderate',
-                'sillage' => 'Intimate',
-                'gender' => 'Unisex',
-                'price' => '$$$$',
-                'badge' => 'Cologne',
-                'description' => 'Escape the everyday along the windswept shore — mineral, earthy, and free.',
-                'seasons' => ['spring', 'summer'],
-                'time' => ['day'],
-                'occasions' => ['daily', 'sport', 'office'],
-                'accords' => ['fresh', 'salty', 'marine', 'woody', 'musky'],
-            ],
-            [
-                'slug' => 'molecule-01',
-                'name' => 'Molecule 01',
-                'brand' => 'Escentric Molecules',
-                'image' => 'images/Molecule.jpg',
-                'longevity' => 'Long Lasting',
-                'sillage' => 'Moderate',
-                'gender' => 'Unisex',
-                'price' => '$$$$',
-                'badge' => 'EDT',
-                'description' => 'A single note of Iso E Super — minimalist, enigmatic, and uniquely yours on skin.',
-                'seasons' => ['winter', 'spring', 'summer', 'fall'],
-                'time' => ['day', 'night'],
-                'occasions' => ['daily', 'office', 'sport'],
-                'accords' => ['woody', 'musky', 'amber', 'fresh', 'powdery'],
-            ],
-            [
-                'slug' => 'gypsy-water',
-                'name' => 'Gypsy Water',
-                'brand' => 'Byredo',
-                'image' => 'images/gypsy.jpg',
-                'longevity' => 'Moderate',
-                'sillage' => 'Moderate',
-                'gender' => 'Unisex',
-                'price' => '$$$',
-                'badge' => 'EDP',
-                'description' => 'A romanticized interpretation of the Romany lifestyle — woody, smoky, and citrus-bright.',
-                'seasons' => ['spring', 'summer'],
-                'time' => ['day'],
-                'occasions' => ['daily', 'office'],
-                'accords' => ['citrus', 'woody', 'vanilla', 'fresh', 'warm spicy'],
-            ],
-        ];
-    }
+
+
+
 
     public static function accordColors(): array
     {
@@ -283,23 +41,18 @@ class FragranceController extends Controller
 
     public function index()
     {
-        $fragrances = self::all();
-        $featured = $fragrances[0];
-        return view('welcome', [
-            'fragrances' => $fragrances,
-            'featured'   => $featured,
-        ]);
+        $fragrances = \App\Models\Perfume::with(['seasons', 'occasions', 'brand'])->get();
+        $featured = \App\Models\Perfume::where('is_featured', true)->first() ?? $fragrances->first();
+
+        return view('welcome', compact('fragrances', 'featured'));
+        
     }
 
     public function show(string $slug)
     {
-        $fragrances = self::all();
-        $fragrance  = collect($fragrances)->firstWhere('slug', $slug);
-
-        if (! $fragrance) {
-            abort(404);
-        }
-
+        $fragrance = \App\Models\Perfume::with(['brand', 'occasions', 'seasons'])
+            ->where('name', 'LIKE', str_replace('-', ' ', $slug))
+            ->firstOrFail();
         return view('fragrance', [
             'fragrance' => $fragrance,
             'colors'    => self::accordColors(),

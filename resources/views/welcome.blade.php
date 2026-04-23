@@ -7,7 +7,7 @@
 @section('content')
     <style>
         .hero {
-            background-image: url('{{ asset($featured['hero_image'] ?? $featured['image']) }}') !important;
+            background-image: url('{{ asset("storage/" . $featured->hero_image) }}') !important;
         }
     </style>
 
@@ -15,9 +15,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <p class="hero-label">Featured Fragrance</p>
-            <h1 class="hero-title">{{ $featured['name'] }}</h1>
-            <p class="hero-desc">{{ $featured['description'] }}</p>
-            <a href="{{ route('fragrance.show', $featured['slug']) }}" class="hero-btn">View Details</a>
+            <h1 class="hero-title">{{ $featured->name }}</h1>
+            <p class="hero-desc">{{ $featured->description   }}</p>
+            <a href="{{ route('fragrance.show', Str::slug($featured->name)) }}" class="hero-btn">View Details</a>
         </div>
     </section>
 
@@ -33,26 +33,26 @@
 
             <p class="filter-label">Occasions</p>
             <div data-group="occasion">
-                <label><input type="checkbox" value="daily"> Daily</label>
-                <label><input type="checkbox" value="office"> Office</label>
-                <label><input type="checkbox" value="date"> Date</label>
-                <label><input type="checkbox" value="sport"> Sport</label>
-                <label><input type="checkbox" value="formal"> Formal</label>
+                <label><input type="checkbox" value="Daily"> Daily</label>
+                <label><input type="checkbox" value="Office"> Office</label>
+                <label><input type="checkbox" value="Date"> Date</label>
+                <label><input type="checkbox" value="Sport"> Sport</label>
+                <label><input type="checkbox" value="Formal"> Formal</label>
             </div>
 
             <p class="filter-label">Season</p>
             <div data-group="season">
-                <label><input type="checkbox" value="winter"> Winter</label>
-                <label><input type="checkbox" value="summer"> Summer</label>
-                <label><input type="checkbox" value="spring"> Spring</label>
-                <label><input type="checkbox" value="fall"> Fall</label>
+                <label><input type="checkbox" value="Winter"> Winter</label>
+                <label><input type="checkbox" value="Summer"> Summer</label>
+                <label><input type="checkbox" value="Spring"> Spring</label>
+                <label><input type="checkbox" value="Fall"> Fall</label>
             </div>
 
             <p class="filter-label">Gender</p>
             <div data-group="gender">
-                <label><input type="checkbox" value="masculine"> Masculine</label>
-                <label><input type="checkbox" value="feminine"> Feminine</label>
-                <label><input type="checkbox" value="unisex"> Unisex</label>
+                <label><input type="checkbox" value="Masculine"> Masculine</label>
+                <label><input type="checkbox" value="Feminine"> Feminine</label>
+                <label><input type="checkbox" value="Unisex"> Unisex</label>
             </div>
         </div>
 
@@ -60,32 +60,37 @@
         <div class="collection-main">
             <div class="collection-header">
                 <h2 class="collection-title">The Collection</h2>
-                <span class="collection-count">Showing <span id="fragCount">{{ count($fragrances) }}</span> fragrances</span>
+                <span class="collection-count">Showing <span
+                        id="fragCount">{{ count($fragrances) }}</span> fragrances</span>
             </div>
 
             <div class="collection-grid" id="collectionGrid">
-                @foreach ($fragrances as $frag)
-                    <a href="{{ route('fragrance.show', $frag['slug']) }}"
+                @foreach ($fragrances as $fragrance)
+                    <a href="{{ route('fragrance.show', \Illuminate\Support\Str::slug($fragrance->name)) }}"
                        class="frag-card"
-                       data-name="{{ strtolower($frag['name']) }}"
-                       data-brand="{{ strtolower($frag['brand']) }}"
-                       data-gender="{{ strtolower($frag['gender']) }}"
-                       data-seasons="{{ implode(',', $frag['seasons']) }}"
-                       data-occasions="{{ implode(',', $frag['occasions']) }}">
+                       data-name="{{ strtolower($fragrance->name) }}"
+                       {{-- Fix: use brand name, not the whole object --}}
+                       data-brand="{{ strtolower($fragrance->brand?->name ?? '') }}"
+                       data-gender="{{ strtolower($fragrance->gender ?? '') }}"
+                       data-seasons="{{ $fragrance->seasons->pluck('name')->map(fn($s) => strtolower($s))->implode(',') }}"
+                       data-occasions="{{ $fragrance->occasions?->pluck('name')->map(fn($o) => strtolower($o))->implode(',') ?? '' }}"
+                    >>
                         <div class="frag-image-wrap">
-                            <img src="{{ asset($frag['image']) }}" alt="{{ $frag['name'] }}" onerror="this.style.visibility='hidden'">
-                            @if (! empty($frag['badge']))
-                                <span class="frag-badge">{{ $frag['badge'] }}</span>
+                            <img src="{{ asset('storage/' . $fragrance->image) }}"
+                                 alt="{{ $fragrance->name }}"
+                                 onerror="this.style.visibility='hidden'">
+                            @if (! empty($fragrance->badge))
+                                <span class="frag-detail-badge">{{ $fragrance->badge }}</span>
                             @endif
                         </div>
                         <div class="frag-info">
-                            <p class="frag-name">{{ $frag['name'] }}</p>
-                            <p class="frag-brand">{{ $frag['brand'] }}</p>
+                            <p class="frag-name">{{ $fragrance['name'] }}</p>
+                            <p class="frag-brand">{{ $fragrance->brand?->name ?? 'Unknown Brand' }}</p>
                             <div class="frag-stats">
-                                <span>LONGEVITY: <strong>{{ $frag['longevity'] }}</strong></span>
-                                <span>SILLAGE: <strong>{{ $frag['sillage'] }}</strong></span>
-                                <span>GENDER: <strong>{{ $frag['gender'] }}</strong></span>
-                                <span>PRICE: <strong>{{ $frag['price'] }}</strong></span>
+                                <span>LONGEVITY: <strong>{{ $fragrance->longevity ?? 'N/A' }}</strong></span>
+                                <span>SILLAGE: <strong>{{ $fragrance->sillage ?? 'N/A' }}</strong></span>
+                                <span>GENDER: <strong>{{ $fragrance->gender }}</strong></span>
+                                <span>PRICE: <strong>{{ $fragrance->price ?? 'N/A' }}</strong></span>
                             </div>
                         </div>
                     </a>

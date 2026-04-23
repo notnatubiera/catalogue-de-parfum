@@ -10,6 +10,13 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\CheckboxList;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -23,35 +30,83 @@ class PerfumeResource extends Resource
     {
         return $form
             ->schema([
-                // Standard Text Input
-                Forms\Components\TextInput::make('name')
-                    ->required(),
+                Section::make('Core Information')->schema([
+                    TextInput::make('name')->required(),
+                    Forms\Components\Select::make('brand_id')
+                        ->relationship('brand', 'name')
+                        ->required(),
 
-                // Select Dropdown for the Brand
-                Forms\Components\Select::make('brand_id')
-                    ->relationship('brand', 'name')
-                    ->required(),
+                    Textarea::make('description')
+                        ->label('Universal Description')
+                        ->rows(3)
+                        ->helperText('This text appears on both the homepage carousel and the fragrance profile.')
+                        ->required(),
 
-                // Multi-select for the Pivot Tables (Seasons & Occasions)
-                Forms\Components\Select::make('seasons')
-                    ->relationship('seasons', 'name')->multiple(),
+                    FileUpload::make('image')
+                        ->label('Bottle Image (Grid/Profile)')
+                        ->image()
+                        ->directory('fragrances')
+                        ->required(),
+                    TextInput::make('price')
+                        ->placeholder('e.g. $$$$')
+                        ->label('Price Range'),
 
-                Forms\Components\Select::make('occasions')
-                    ->relationship('occasions', 'name')->multiple(),
+                    Select::make('longevity')
+                        ->options([
+                            'Weak' => 'Weak',
+                            'Moderate' => 'Moderate',
+                            'Long Lasting' => 'Long Lasting',
+                            'Eternal' => 'Eternal',
+                        ]),
+
+                    Select::make('sillage')
+                        ->options([
+                            'Intimate' => 'Intimate',
+                            'Moderate' => 'Moderate',
+                            'Strong' => 'Strong',
+                            'Enormous' => 'Enormous',
+                        ]),
+
+                    Forms\Components\Select::make('seasons')
+                        ->relationship('seasons', 'name')->multiple(),
+
+                    Forms\Components\Select::make('occasions')
+                        ->relationship('occasions', 'name')->multiple(),
+
+                    // Gender as a simple dropdown inside this resource
+                    Select::make('gender')
+                        ->options([
+                            'Masculine' => 'Masculine',
+                            'Feminine' => 'Feminine',
+                            'Unisex' => 'Unisex',
+                        ])->required(),
+
+                    CheckboxList::make('time_of_day')
+                        ->label('Best Time to Wear')
+                        ->options([
+                            'day' => 'Day',
+                            'night' => 'Night',
+                        ])
+                        ->columns(2),
+
+                    // Universal Description for both Carousel and Profile
+
+                ]),
+
+                Section::make('Featured Fragrance Carousel')->schema([
+                    // Feature Toggle for the Carousel
+                    Toggle::make('is_featured')
+                        ->label('Feature in Homepage Carousel')
+                        ->helperText('If enabled, this fragrance can appear in the hero section.'),
+
+                    FileUpload::make('hero_image')
+                        ->label('Hero Background (Carousel Only)')
+                        ->image()
+                        ->directory('hero-images')
+                        ->helperText('Upload a landscape image for the homepage hero section.'),
+                ])->columns(2),
 
 
-                Forms\Components\Repeater::make('sizes')
-                    ->schema([
-                        Forms\Components\TextInput::make('ml')
-                            ->numeric()
-                            ->suffix('ml')
-                            ->required(),
-                        Forms\Components\TextInput::make('price')
-                            ->numeric()
-                            ->prefix('₱') // Or your currency
-                            ->required(),
-                    ])
-                    ->columns(2)
             ]);
     }
 
@@ -59,32 +114,6 @@ class PerfumeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('price_range') // Note the name change
-                ->label('Price Range')
-                    ->getStateUsing(function ($record) {
-                        // We pull the data directly from the model record
-                        $sizes = $record->sizes;
-
-                        if (empty($sizes)) return 'N/A';
-
-                        // Ensure it's an array (handles the string ghost)
-                        $array = is_string($sizes) ? json_decode($sizes, true) : $sizes;
-
-                        $prices = collect($array)
-                            ->pluck('price')
-                            ->filter()
-                            ->map(fn($p) => (float)$p)
-                            ->sort();
-
-                        if ($prices->isEmpty()) return 'N/A';
-
-                        $min = $prices->first();
-                        $max = $prices->last();
-
-                        return $min === $max
-                            ? '₱' . number_format($min)
-                            : '₱' . number_format($min) . ' - ₱' . number_format($max);
-                    }),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),

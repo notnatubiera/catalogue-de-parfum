@@ -2,9 +2,10 @@
 function filterProducts() {
     const checked = { occasion: [], season: [], gender: [] };
 
-    document.querySelectorAll('[data-group="occasion"] input:checked').forEach(cb => checked.occasion.push(cb.value));
-    document.querySelectorAll('[data-group="season"] input:checked').forEach(cb => checked.season.push(cb.value));
-    document.querySelectorAll('[data-group="gender"] input:checked').forEach(cb => checked.gender.push(cb.value));
+// Change these lines in source 1 to add .toLowerCase()
+    document.querySelectorAll('[data-group="occasion"] input:checked').forEach(cb => checked.occasion.push(cb.value.toLowerCase()));
+    document.querySelectorAll('[data-group="season"] input:checked').forEach(cb => checked.season.push(cb.value.toLowerCase()));
+    document.querySelectorAll('[data-group="gender"] input:checked').forEach(cb => checked.gender.push(cb.value.toLowerCase()));
 
     const hasFilters = checked.occasion.length > 0 || checked.season.length > 0 || checked.gender.length > 0;
 
