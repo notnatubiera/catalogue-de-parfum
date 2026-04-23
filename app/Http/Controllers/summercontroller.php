@@ -53,37 +53,4 @@ class summercontroller extends Controller
         ]);
 
     }
-    public function show($name, $season, $gender)
-    {
-        $allFragrances = collect([
-            // Masculine
-            ['name' => 'Sauvage', 'brand' => 'Dior', 'gender' => 'men', 'notes' => 'FRESH SPICY, AMBER, AROMATIC, CITRUS, WOODY', 'image' => 'sauvage.jpg'],
-            ['name' => 'Bleu de Chanel', 'brand' => 'Chanel', 'gender' => 'men', 'notes' => 'CITRUS, WOODY, FRESH, AROMATIC, SPICY', 'image' => 'bleu_chanel.jpg'],
-            ['name' => 'Aventus', 'brand' => 'Creed', 'gender' => 'men', 'notes' => 'FRUITY, SMOKY, WOODY, FRESH, MUSKY', 'image' => 'creed_aventus.jpg'],
-
-            // Feminine
-            ['name' => 'Libre', 'brand' => 'Yves Saint Laurent', 'gender' => 'women', 'notes' => 'WHITE FLORAL, VANILLA, AROMATIC, CITRUS, MUSKY', 'image' => 'libre.jpg'],
-
-            // Unisex
-            ['name' => 'CK One', 'brand' => 'Calvin Klein', 'gender' => 'unisex', 'notes' => 'CITRUS, FRESH, GREEN, AROMATIC, MUSKY', 'image' => 'ck-one.jpg'],
-            ['name' => 'Wood Sage & Sea Salt', 'brand' => 'Jo Malone', 'gender' => 'unisex', 'notes' => 'FRESH, SALTY, MARINE, WOODY, MUSKY', 'image' => 'jomalone.jpg'],
-            ['name' => 'Molecule 01', 'brand' => 'Escentric Molecules', 'gender' => 'unisex', 'notes' => 'WOODY, MUSKY, AMBER, FRESH, MINIMALIST', 'image' => 'molecule-01.jpg'],
-            ['name' => 'Gypsy Water', 'brand' => 'Byredo', 'gender' => 'unisex', 'notes' => 'CITRUS, WOODY, VANILLA, FRESH, SPICY', 'image' => 'gypsy-water.jpg'],
-        ]);
-
-        $fragrance = collect($this->allFragrances)->firstWhere('name', $name);
-
-        if (!$fragrance) {
-            abort(404, "Fragrance not found in our collection.");
-        }
-
-        $notesArray = explode(',', $fragrance['notes']);
-
-        return view('fragrance.show', [
-            'fragrance' => $fragrance,
-            'notesArray' => $notesArray,
-            'season' => $season,
-            'gender' => $gender
-        ]);
-    }
 }

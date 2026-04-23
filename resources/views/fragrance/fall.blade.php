@@ -46,10 +46,11 @@
                     <span class="brand-name">{{ $item['brand'] }}</span>
                     <h3>{{ $item['name'] }}</h3>
                     <p class="notes">{{ $item['notes'] }}</p>
-                    <a href="{{ route('fragrance.show', [
-    'name' => $item['name'],
+                    <a href="{{ route('fragrances.show', [
+    'slug' => Str::slug($item['name']),
+    'from' => 'seasons',
     'season' => 'fall',
-    'gender' => strtolower($genderTitle)
+    'gender' => strtolower($genderTitle),
 ]) }}" class="buy-btn">
                         View Details
                     </a>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
 
 * {
     margin: 0;
@@ -8,95 +8,96 @@
 
 body, html {
     width: 100%;
-    background-color: #fffdfa; /* Warm off-white like sand */
+    background-color: #F5EFE6;
 }
 
-.summer-page { /* Changed class name to summer-page */
-    /* Warm gradient: Bright Sun to Shallow Water */
-    background: linear-gradient(180deg, #fff9f0 0%, #e0f7f6 100%);
+.spring-page, .summer-page, .fall-page, .winter-page {
+    background: #F5EFE6;
     min-height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 60px 0;
-    font-family: 'Montserrat', sans-serif;
-    color: #2c3e50;
+    font-family: 'Inter', 'Montserrat', sans-serif;
+    color: #1a1a1a;
 }
 
-/* Header - Airy and Tropical */
-.summer-header {
+.spring-header, .summer-header, .fall-header, .winter-header {
     text-align: center;
     max-width: 700px;
     margin-bottom: 50px;
+    padding: 0 24px;
 }
 
-.summer-header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem;
-    letter-spacing: 8px; /* Slightly tighter for a breezy feel */
+.spring-header h1, .summer-header h1, .fall-header h1, .winter-header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.5rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     font-weight: 400;
-    color: #008b8b; /* Tropical Sea Teal */
-    margin-bottom: 15px;
+    color: #1a1a1a;
+    margin-bottom: 18px;
+    font-style: normal;
 }
 
-.summer-header p {
-    color: #94a3a3;
+.spring-header p, .summer-header p, .fall-header p, .winter-header p {
+    color: #8B7355;
     font-style: italic;
-    letter-spacing: 1px;
+    letter-spacing: 0.08em;
     font-size: 0.95rem;
 }
 
-/* Filter Bar - Beach Glass Look */
 .filter-bar {
     margin: 30px 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 .filter-bar select {
-    padding: 12px 25px;
-    border: 1px solid #c2e0df;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(4px); /* Softer blur than winter */
-    color: #008b8b;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.7rem;
-    cursor: pointer;
-    border-radius: 25px; /* Rounded corners for a softer summer feel */
-    outline: none;
-    transition: 0.3s;
-}
-
-.filter-bar select:hover {
-    border-color: #ff8c00; /* Coral/Orange pop on hover */
+    padding: 11px 22px;
+    margin: 0;
+    border: 1px solid #e8ddd0;
     background: #ffffff;
+    backdrop-filter: none;
+    color: #1a1a1a;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.68rem;
+    cursor: pointer;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s ease;
 }
 
-/* The Grid */
+.filter-bar select:hover,
+.filter-bar select:focus {
+    border-color: #8B7355;
+    background: #ffffff;
+    color: #1a1a1a;
+}
+
 .fragrance-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, 320px);
-    gap: 50px;
+    gap: 40px;
     width: 100%;
     max-width: 1300px;
     justify-content: center;
     padding: 0 40px;
 }
 
-/* Cards - The "Poolside" Aesthetic */
 .fragrance-card {
     background: #ffffff;
-    padding: 30px;
+    padding: 28px 28px 32px;
     text-align: center;
-    border: none; /* Removed border for a lighter look */
-    border-radius: 15px; /* Softer edges */
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 0 10px 30px rgba(0, 139, 139, 0.05); /* Teal-tinted shadow */
+    border: 1px solid #e8ddd0;
+    border-radius: 2px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -104,108 +105,123 @@ body, html {
 }
 
 .fragrance-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 45px rgba(255, 140, 0, 0.15); /* Sunkissed orange glow */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: none;
+    border-color: #e8ddd0;
 }
 
-/* Image Frame - Shallow Water Tint */
 .img-wrapper {
-    background-color: #f0fdfd;
-    margin-bottom: 25px;
-    height: 380px;
+    background-color: #faf7f3;
+    margin-bottom: 26px;
+    height: 360px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
     overflow: hidden;
+    border-radius: 0;
+    border: none;
 }
 
 .img-wrapper img {
-    max-width: 80%;
+    max-width: 78%;
+    max-height: 88%;
+    object-fit: contain;
     height: auto;
-    filter: saturate(110%) contrast(105%); /* Pop the summer colors */
-    transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+    filter: none;
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .fragrance-card:hover .img-wrapper img {
-    transform: scale(1.1);
+    transform: scale(1.03);
 }
 
-/* Details Styling */
 .brand-name {
-    font-size: 0.75rem;
-    color: #ff8c00; /* Sunset Orange */
+    font-size: 0.72rem;
+    color: #8B7355;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 0.28em;
     margin-bottom: 10px;
+    font-weight: 500;
 }
 
 .fragrance-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    color: #2c3e50;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.45rem;
+    color: #1a1a1a;
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
     text-transform: uppercase;
+    font-weight: 400;
+    line-height: 1.2;
 }
 
 .notes {
-    font-size: 0.8rem;
-    color: #7f8c8d;
-    font-style: italic;
-    margin-bottom: 20px;
+    font-size: 0.7rem;
+    color: #999;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1.8;
+    font-style: normal;
 }
 
-/* Button - The "Ocean" Style */
 .buy-btn {
     margin-top: auto;
-    background: #008b8b; /* Solid teal */
+    background: #1a1a1a;
     border: none;
     color: #ffffff;
-    padding: 14px;
+    padding: 13px 14px;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 0.28em;
     font-size: 0.7rem;
-    font-weight: 700;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 50px;
+    border-radius: 2px;
     width: 100%;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+    box-shadow: none;
 }
 
 .buy-btn:hover {
-    background: #ff8c00; /* Shift to sunset orange */
-    letter-spacing: 5px;
-    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+    background: #2c2c2c;
+    letter-spacing: 0.28em;
+    box-shadow: none;
+    color: #ffffff;
 }
 
-/* Back Link */
 .back-link {
     display: inline-block;
     margin-top: 20px;
     text-decoration: none;
-    color: #008b8b;
+    color: #8B7355;
     text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    transition: color 0.2s ease;
 }
 
 .back-link:hover {
-    color: #ff8c00;
+    color: #1a1a1a;
+    letter-spacing: 0.25em;
 }
-/* Make the grid items wait slightly for the header to fade in first */
+
 .fragrance-card {
     animation: pageFadeIn 0.8s ease-out forwards;
     opacity: 0;
 }
 
-/* Delay the cards slightly */
 .fragrance-card:nth-child(1) { animation-delay: 0.1s; }
 .fragrance-card:nth-child(2) { animation-delay: 0.2s; }
 .fragrance-card:nth-child(3) { animation-delay: 0.3s; }
 .fragrance-card:nth-child(4) { animation-delay: 0.4s; }
-/* and so on... */
+
+@keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

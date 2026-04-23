@@ -17,7 +17,7 @@
             <p class="hero-label">Featured Fragrance</p>
             <h1 class="hero-title">{{ $featured['name'] }}</h1>
             <p class="hero-desc">{{ $featured['description'] }}</p>
-            <a href="{{ route('fragrance.show', $featured['slug']) }}" class="hero-btn">View Details</a>
+            <a href="{{ route('fragrances.show', $featured['slug']) }}" class="hero-btn">View Details</a>
         </div>
     </section>
 
@@ -65,7 +65,7 @@
 
             <div class="collection-grid" id="collectionGrid">
                 @foreach ($fragrances as $frag)
-                    <a href="{{ route('fragrance.show', $frag['slug']) }}"
+                    <a href="{{ route('fragrances.show', $frag['slug']) }}"
                        class="frag-card"
                        data-name="{{ strtolower($frag['name']) }}"
                        data-brand="{{ strtolower($frag['brand']) }}"

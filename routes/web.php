@@ -1,58 +1,43 @@
 <?php
+
 use App\Http\Controllers\FragranceController;
+use App\Http\Controllers\fallcontroller;
+use App\Http\Controllers\springcontroller;
+use App\Http\Controllers\summercontroller;
+use App\Http\Controllers\wintercontroller;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [FragranceController::class, 'index']);
-Route::get('/main', [FragranceController::class, 'index']);
-Route::get('/fragrance/{slug}', [FragranceController::class,
-Route::get('/notes', function () {
-    return view('notes'); // This looks for a file named notes.blade.php
+// ---------- Home ----------
+Route::get('/', [FragranceController::class, 'index'])->name('home');
+Route::get('/main', [FragranceController::class, 'index'])->name('main');
+
+// ---------- Static pages ----------
+Route::get('/notes', fn () => view('notes'))->name('notes.index');
+Route::get('/collection', fn () => view('collection'))->name('collection.index');
+Route::get('/season', fn () => view('season'))->name('season');
+
+// ---------- Fragrance detail (canonical, slug-based) ----------
+Route::get('/fragrance/{slug}', [FragranceController::class, 'show'])
+    ->name('fragrances.show');
+
+// ---------- Legacy detail URL — 301 redirect to canonical, preserving season/gender context ----------
+Route::get('/fragrance/details/{name}/{season}/{gender}', function ($name, $season, $gender) {
+    return redirect()->route('fragrances.show', [
+        'slug'   => \Illuminate\Support\Str::slug($name),
+        'from'   => 'seasons',
+        'season' => $season,
+        'gender' => $gender,
+    ], 301);
 });
-Route::get('/collection', function () {
-    return view('collection'); // This looks for a file named notes.blade.php
-});
-Route::get('/season', function () {
-    return view('season'); // This looks for a file named notes.blade.php
-})->name('season');
 
+// ---------- Season: gender pickers (must precede /{season}/{gender?}) ----------
+Route::get('/spring/choose', fn () => view('fragrance.gender.genderspring'))->name('spring.choose');
+Route::get('/summer/choose', fn () => view('fragrance.gender.gendersummer'))->name('summer.choose');
+Route::get('/fall/choose',   fn () => view('fragrance.gender.genderfall'))->name('fall.choose');
+Route::get('/winter/choose', fn () => view('fragrance.gender.genderwinter'))->name('winter.choose');
 
-use App\Http\Controllers\summercontroller;
-
-// This tells Laravel: When user goes to /summer, run the 'summer' function inside summercontroller
-// Put this one FIRST
-Route::get('/summer/choose', function () {
-    return view('fragrance.gender.gendersummer');
-})->name('summer.choose');
-
-// Put the controller one SECOND
-Route::get('/summer/{gender?}', [summercontroller::class, 'summer'])->name('summer.index');
-
-use App\Http\Controllers\springcontroller;
-Route::get('/spring/choose', function () {
-    return view('fragrance.gender.genderspring');
-})->name('spring.choose');
-
-// The main spring collection page (goes to the controller)
+// ---------- Season collection grids ----------
 Route::get('/spring/{gender?}', [springcontroller::class, 'spring'])->name('spring.index');
-
-use App\Http\Controllers\fallcontroller;
-Route::get('/fall/choose', function () {
-    return view('fragrance.gender.genderfall');
-})->name('fall.choose');
-
-// The main spring collection page (goes to the controller)
-Route::get('/fall/{gender?}', [fallcontroller::class, 'fall'])->name('fall.index');
-use App\Http\Controllers\wintercontroller;
-Route::get('/winter/choose', function () {
-    return view('fragrance.gender.genderwinter');
-})->name('winter.choose');
-
-// The main spring collection page (goes to the controller)
-// Details Route (Works for all seasons)
-Route::get('/fragrance/details/{name}/{season}/{gender}', [springcontroller::class, 'show'])->name('fragrance.show');
-
-// Collection Routes
-Route::get('/summer/{gender}', [springcontroller::class, 'summer'])->name('summer.index');
-Route::get('/fall/{gender}', [springcontroller::class, 'fall'])->name('fall.index');
-Route::get('/winter/{gender}', [springcontroller::class, 'winter'])->name('winter.index');
-
+Route::get('/summer/{gender?}', [summercontroller::class, 'summer'])->name('summer.index');
+Route::get('/fall/{gender?}',   [fallcontroller::class, 'fall'])->name('fall.index');
+Route::get('/winter/{gender?}', [wintercontroller::class, 'winter'])->name('winter.index');

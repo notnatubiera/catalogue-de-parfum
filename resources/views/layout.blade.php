@@ -240,7 +240,7 @@
 <nav>
     <!-- logo -->
     <div class="nav-left">
-        <a href="/main" class="logo {{ request()->is('main') ? 'active' : '' }}">Catalogue de Parfum</a>
+        <a href="{{ route('main') }}" class="logo {{ request()->is('main') ? 'active' : '' }}">Catalogue de Parfum</a>
     </div>
 
     <!-- search bararar -->
@@ -251,8 +251,8 @@
 
     <!-- right -->
     <div class="nav-right">
-        <a href="/collection" class="{{ request()->is('collection') ? 'active' : '' }}">Brands</a>
-        <a href="/season" class="{{ request()->is('season') ? 'active' : '' }}">Season</a>
+        <a href="{{ route('collection.index') }}" class="{{ request()->is('collection') ? 'active' : '' }}">Brands</a>
+        <a href="{{ route('season') }}" class="{{ request()->is('season') ? 'active' : '' }}">Season</a>
         <a href="/admin" class="admin-login">Admin Login</a>
     </div>
 </nav>

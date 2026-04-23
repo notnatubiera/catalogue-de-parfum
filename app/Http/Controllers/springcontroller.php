@@ -79,12 +79,4 @@ class springcontroller extends Controller
         return $collection;
     }
 
-    public function show($name, $season, $gender)
-    {
-        $fragrance = collect($this->allFragrances)->firstWhere('name', $name);
-        if (!$fragrance) { abort(404); }
-
-        $notesArray = explode(',', $fragrance['notes']);
-        return view('fragrance.show', compact('fragrance', 'notesArray', 'season', 'gender'));
-    }
 }

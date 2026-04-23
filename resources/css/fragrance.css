@@ -188,19 +188,29 @@
     color: #bbb;
 }
 
-/* ACCORDS GRAPH — luxury redesign */
+/* ACCORDS GRAPH — editorial redesign */
 .accords-panel {
     margin-top: 70px;
-    padding: 40px 40px 48px;
+    padding: 44px 48px 52px;
     background: #fff;
     border: 0.5px solid #ede8e0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    position: relative;
+}
+
+.accords-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 48px;
+    width: 28px; height: 1px;
+    background: #b8965a;
 }
 
 .accords-title {
     font-family: Arial, sans-serif;
     font-weight: 400;
     font-size: 10px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
     color: #b8965a;
     margin: 0 0 36px;
@@ -211,68 +221,130 @@
 .accords-bars {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
 }
 
 /* each row = label + bar */
 .accord-row {
     display: grid;
-    grid-template-columns: 130px 1fr auto;
+    grid-template-columns: 130px 1fr 44px;
     align-items: center;
-    gap: 20px;
+    gap: 22px;
     cursor: default;
 }
 
 .accord-label {
     font-family: Arial, sans-serif;
     font-size: 10px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #888;
     text-align: right;
-    transition: color 0.3s ease;
+    transition: color 0.35s ease, letter-spacing 0.35s ease;
     white-space: nowrap;
 }
 
 .accord-row:hover .accord-label {
     color: #1a1a1a;
+    letter-spacing: 0.24em;
 }
 
 .accord-track {
     height: 22px;
-    background: #f0ebe3;
+    background: #f4efe6;
     position: relative;
     border-radius: 1px;
     overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .accord-bar {
     height: 100%;
+    width: 0;
     border-radius: 1px;
-    transition: filter 0.3s ease, height 0.3s ease;
     position: relative;
+    background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--accord-c, #b8965a) 88%, #0a0a0a) 0%,
+        var(--accord-c, #b8965a) 55%,
+        color-mix(in srgb, var(--accord-c, #b8965a) 82%, #ffffff) 100%
+    );
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+    transform-origin: left center;
+    animation: accord-grow 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+    transition: filter 0.35s ease;
+}
+
+/* subtle polish — a thin gloss sliver across the top of each bar */
+.accord-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 40%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+}
+
+@keyframes accord-grow {
+    from { width: 0; }
+    to   { width: var(--accord-w, 0%); }
 }
 
 .accord-row:hover .accord-track {
-    height: 30px; /* expands slightly on hover */
+    height: 28px;
 }
 
 .accord-row:hover .accord-bar {
-    filter: brightness(1.12);
+    filter: brightness(1.08) saturate(1.08);
 }
 
 .accord-pct {
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: #ccc;
-    min-width: 32px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 15px;
+    color: #bfb09a;
+    min-width: 44px;
     text-align: right;
-    transition: color 0.3s ease;
+    transition: color 0.35s ease;
+    opacity: 0;
+    animation: accord-pct-fade 0.6s ease forwards;
+    animation-delay: calc(var(--i, 0) * 90ms + 900ms);
+}
+
+@keyframes accord-pct-fade {
+    to { opacity: 1; }
 }
 
 .accord-row:hover .accord-pct {
     color: #b8965a;
+}
+
+/* Return link under the accords panel on the season detail page */
+.frag-return {
+    margin-top: 36px;
+    text-align: center;
+}
+
+.frag-return .frag-back {
+    margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .accord-bar,
+    .accord-pct {
+        animation: none;
+        opacity: 1;
+    }
+    .accord-bar { width: var(--accord-w, 0%); }
 }
 
 /* responsive */
