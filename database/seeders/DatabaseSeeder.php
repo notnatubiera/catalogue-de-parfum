@@ -29,5 +29,8 @@ class   DatabaseSeeder extends Seeder
             OccasionPerfumeTableSeeder::class, // 5. Link Perfumes to Occasions
             PerfumeSeasonTableSeeder::class,   // 6. Link Perfumes to Seasons
         ]);
+        $this->call(PerfumesTableSeeder::class);
+        $this->call(OccasionPerfumeTableSeeder::class);
+        $this->call(PerfumeSeasonTableSeeder::class);
     }
 }
