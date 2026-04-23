@@ -49,15 +49,17 @@ class PerfumeResource extends Resource
                         ->required(),
                     TextInput::make('price')
                         ->placeholder('e.g. $$$$')
-                        ->label('Price Range'),
+                        ->label('Price Range')
+                        ->required(),
 
                     Select::make('longevity')
                         ->options([
                             'Weak' => 'Weak',
                             'Moderate' => 'Moderate',
                             'Long Lasting' => 'Long Lasting',
-                            'Eternal' => 'Eternal',
-                        ]),
+                            'Very Long Lasting' => 'Very Long Lasting',
+                        ])
+                        ->required(),
 
                     Select::make('sillage')
                         ->options([
@@ -65,13 +67,20 @@ class PerfumeResource extends Resource
                             'Moderate' => 'Moderate',
                             'Strong' => 'Strong',
                             'Enormous' => 'Enormous',
-                        ]),
+                        ])
+                        ->required(),
 
                     Forms\Components\Select::make('seasons')
-                        ->relationship('seasons', 'name')->multiple(),
-
+                        ->relationship('seasons', 'name')
+                        ->multiple()
+                        ->preload()
+                        ->native(false)
+                        ->required(),
                     Forms\Components\Select::make('occasions')
-                        ->relationship('occasions', 'name')->multiple(),
+                        ->relationship('occasions', 'name')->multiple()
+                        ->preload()
+                        ->native(false)
+                        ->required(),
 
                     // Gender as a simple dropdown inside this resource
                     Select::make('gender')
@@ -87,6 +96,7 @@ class PerfumeResource extends Resource
                             'day' => 'Day',
                             'night' => 'Night',
                         ])
+                        ->required()
                         ->columns(2),
 
                     // Universal Description for both Carousel and Profile
