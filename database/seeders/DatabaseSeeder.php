@@ -21,5 +21,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+        $this->call(PerfumesTableSeeder::class);
+        $this->call(BrandsTableSeeder::class);
+        $this->call(OccasionsTableSeeder::class);
+        $this->call(SeasonsTableSeeder::class);
+        $this->call(OccasionPerfumeTableSeeder::class);
+        $this->call(PerfumeSeasonTableSeeder::class);
     }
 }
